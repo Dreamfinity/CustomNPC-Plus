@@ -92,9 +92,9 @@ public class VersionCompatibility {
 		if(npc.npcVersion == 12){
 			NBTTagList list = compound.getTagList("StartPos", 3);
 			if(list.tagCount() == 3){
-				int z = ((NBTTagInt) list.removeTag(2)).func_150287_d();
-				int y = ((NBTTagInt) list.removeTag(1)).func_150287_d();
-				int x = ((NBTTagInt) list.removeTag(0)).func_150287_d();
+				int z = ((NBTTagInt) list.removeTag(2)).getInt();
+				int y = ((NBTTagInt) list.removeTag(1)).getInt();
+				int x = ((NBTTagInt) list.removeTag(0)).getInt();
 				
 				compound.setIntArray("StartPosNew", new int[]{x,y,z});
 			}
@@ -182,7 +182,7 @@ public class VersionCompatibility {
 					if(item.hasKey("Texture")){
 						item.setString("Texture", item.getString("Texture").replace("moreplayermodels:textures", "customnpcs:textures/parts"));
 					}
-					list.func_150304_a(i, item);
+					list.setTag(i, item);
 				}
 				modelData.setTag("Parts", list);
 			}
@@ -199,7 +199,7 @@ public class VersionCompatibility {
 	}
 	private static void CompatabilityFix(NBTTagCompound compound,
 			NBTTagCompound check) {
-		Collection<String> tags = check.func_150296_c();
+		Collection<String> tags = check.getKeySet();
 		for(String name : tags){
 			NBTBase nbt = check.getTag(name);
 			if(!compound.hasKey(name)){

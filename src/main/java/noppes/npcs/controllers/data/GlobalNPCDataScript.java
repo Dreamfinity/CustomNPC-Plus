@@ -84,7 +84,7 @@ public class GlobalNPCDataScript implements IScriptHandler {
         return ConfigScript.GlobalNPCScripts && this.enabled && ScriptController.HasStart && this.scripts.size() > 0;
     }
     public boolean isClient() {
-        return this.npc.isClientWorld();
+        return this.npc.isServerWorld();
     }
     public boolean getEnabled() {
         return this.enabled;

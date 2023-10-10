@@ -34,10 +34,10 @@ public class BlockTableRenderer extends BlockRendererInterface{
         GL11.glRotatef(180, 0, 0, 1);
         GL11.glColor3f(1, 1, 1);
 
-        boolean south = var1.getWorldObj().getBlock(var1.xCoord + 1, var1.yCoord, var1.zCoord) == CustomItems.table;
-        boolean north = var1.getWorldObj().getBlock(var1.xCoord - 1, var1.yCoord, var1.zCoord) == CustomItems.table;
-        boolean east = var1.getWorldObj().getBlock(var1.xCoord, var1.yCoord, var1.zCoord + 1) == CustomItems.table;
-        boolean west = var1.getWorldObj().getBlock(var1.xCoord, var1.yCoord, var1.zCoord - 1) == CustomItems.table;
+        boolean south = var1.getWorld().getBlock(var1.xCoord + 1, var1.yCoord, var1.zCoord) == CustomItems.table;
+        boolean north = var1.getWorld().getBlock(var1.xCoord - 1, var1.yCoord, var1.zCoord) == CustomItems.table;
+        boolean east = var1.getWorld().getBlock(var1.xCoord, var1.yCoord, var1.zCoord + 1) == CustomItems.table;
+        boolean west = var1.getWorld().getBlock(var1.xCoord, var1.yCoord, var1.zCoord - 1) == CustomItems.table;
 
         model.Shape1.showModel = !south && !east;
         model.Shape3.showModel = !north && !west;

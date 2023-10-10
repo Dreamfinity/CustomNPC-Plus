@@ -78,7 +78,7 @@ public class PacketHandlerClient extends PacketHandlerServer{
 			String description = StatCollector.translateToLocal(Server.readString(buffer));
 			String message = Server.readString(buffer);
 			Achievement ach = new QuestAchievement(message, description);
-			Minecraft.getMinecraft().guiAchievement.func_146256_a(ach);
+			Minecraft.getMinecraft().guiAchievement.displayAchievement(ach);
 			ObfuscationReflectionHelper.setPrivateValue(GuiAchievement.class, Minecraft.getMinecraft().guiAchievement, ach.getDescription(), 4);
 		}
 		else if(type == EnumPacketClient.SYNCRECIPES_ADD){

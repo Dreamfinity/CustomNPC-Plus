@@ -58,9 +58,9 @@ public class NpcCommand extends CommandKamkeelBase {
 			return;
 		}
 
-		int x = sender.getPlayerCoordinates().posX;
-		int y = sender.getPlayerCoordinates().posY;
-		int z = sender.getPlayerCoordinates().posZ;
+		int x = sender.getCommandSenderPosition().posX;
+		int y = sender.getCommandSenderPosition().posY;
+		int z = sender.getCommandSenderPosition().posZ;
 		List<EntityNPCInterface> list = getEntities(EntityNPCInterface.class, sender.getEntityWorld(), x, y, z, 80);
 		for (EntityNPCInterface npc : list) {
 			String name = npc.display.getName().replace(" ", "_");
@@ -83,14 +83,14 @@ public class NpcCommand extends CommandKamkeelBase {
 			usage = "[x] [y] [z]"
 	)
 	public void home(ICommandSender sender, String[] args) {
-		double posX = sender.getPlayerCoordinates().posX;
-		double posY = sender.getPlayerCoordinates().posY;
-		double posZ = sender.getPlayerCoordinates().posZ;
+		double posX = sender.getCommandSenderPosition().posX;
+		double posY = sender.getCommandSenderPosition().posY;
+		double posZ = sender.getCommandSenderPosition().posZ;
 
 		if(args.length == 3){
-			posX = CommandBase.func_110666_a(sender, selectedNpc.posX, args[0]);
-			posY = CommandBase.func_110665_a(sender, selectedNpc.posY, args[1].trim(), 0, 0);
-			posZ = CommandBase.func_110666_a(sender, selectedNpc.posZ, args[2]);
+			posX = CommandBase.clamp_coord(sender, selectedNpc.posX, args[0]);
+			posY = CommandBase.clamp_double(sender, selectedNpc.posY, args[1].trim(), 0, 0);
+			posZ = CommandBase.clamp_coord(sender, selectedNpc.posZ, args[2]);
 		}
 
 		selectedNpc.ai.startPos = new int[]{MathHelper.floor_double(posX), MathHelper.floor_double(posY), MathHelper.floor_double(posZ)};

@@ -65,7 +65,7 @@ public class ServerEventsHandler {
 		boolean isRemote = event.entityPlayer.worldObj.isRemote;
 		boolean npcInteracted = event.target instanceof EntityNPCInterface;
 
-		if(!isRemote && ConfigMain.OpsOnly && !MinecraftServer.getServer().getConfigurationManager().func_152596_g(event.entityPlayer.getGameProfile())){
+		if(!isRemote && ConfigMain.OpsOnly && !MinecraftServer.getServer().getConfigurationManager().canSendCommands(event.entityPlayer.getGameProfile())){
 			return;
 		}
 
@@ -153,12 +153,12 @@ public class ServerEventsHandler {
 			return;
 		if(((ItemShield)item.getItem()).material.getDamageVsEntity() < player.getRNG().nextInt(9))
 			return;
-		float damage = item.getItemDamage() + event.ammount;
+		float damage = item.getMetadata() + event.ammount;
 
 		item.damageItem((int) event.ammount, player);
 
-		if(damage > item.getMaxDamage())
-			event.ammount = damage - item.getMaxDamage();
+		if(damage > item.getMaxDurability())
+			event.ammount = damage - item.getMaxDurability();
 		else{
 			event.ammount = 0;
 			event.setCanceled(true);

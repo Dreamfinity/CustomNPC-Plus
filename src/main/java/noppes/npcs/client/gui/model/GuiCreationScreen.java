@@ -130,7 +130,7 @@ public class GuiCreationScreen extends GuiModelInterface implements ICustomScrol
 		int y = guiTop + 20;
 
 		NBTTagCompound compound = getExtras(entity);
-		Set<String> keys = compound.func_150296_c();
+		Set<String> keys = compound.getKeySet();
 		int i = 0;
 		for(String name : keys){
 			if(isIgnored(name))
@@ -142,7 +142,7 @@ public class GuiCreationScreen extends GuiModelInterface implements ICustomScrol
 				addButton(new GuiNpcButton(30, guiLeft + 80, y + i * 22, 50, 20, new String[]{"gui.no","gui.yes"},entity.isChild()?1:0));
 			}
 			else if(base.getId() == 1){
-				byte b = ((NBTTagByte)base).func_150290_f();
+				byte b = ((NBTTagByte)base).getByte();
 				if(b != 0 && b != 1)
 					continue;
 				if(playerdata.extra.hasKey(name))
@@ -185,7 +185,7 @@ public class GuiCreationScreen extends GuiModelInterface implements ICustomScrol
 		catch(Exception e){
 
 		}
-		Set<String> keys = fake.func_150296_c();
+		Set<String> keys = fake.getKeySet();
 		for(String name : keys)
 			compound.removeTag(name);
 

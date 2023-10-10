@@ -31,7 +31,7 @@ public class CustomGuiScrollComponent extends GuiCustomScroll implements IDataHo
     public CustomGuiScrollComponent(Minecraft mc, GuiScreen parent, int id, boolean multiSelect) {
         super(parent, id, multiSelect);
         this.mc = mc;
-        this.fontRendererObj = mc.fontRenderer;
+        this.fontRendererObj = mc.fontRendererObj;
         this.multiSelect = multiSelect;
     }
 

@@ -22,7 +22,7 @@ public class GuiMenuTopButton extends GuiNpcButton
     	super(i,j,k,StatCollector.translateToLocal(s));
         active = false;
 
-        width = Minecraft.getMinecraft().fontRenderer.getStringWidth(displayString) + 12;
+        width = Minecraft.getMinecraft().fontRendererObj.getStringWidth(displayString) + 12;
         height = 20;
     }
     public GuiMenuTopButton(int i, GuiButton parent, String s)
@@ -67,7 +67,7 @@ public class GuiMenuTopButton extends GuiNpcButton
         drawTexturedModalRect(xPosition, yPosition, 0,  k * 20, getWidth() / 2, height);
         drawTexturedModalRect(xPosition + getWidth() / 2, yPosition, 200 - getWidth() / 2,  k * 20, getWidth() / 2, height);
         mouseDragged(minecraft, i, j);
-        FontRenderer fontrenderer = minecraft.fontRenderer;
+        FontRenderer fontrenderer = minecraft.fontRendererObj;
         if(rotated)
         	GL11.glRotatef(90, 1, 0, 0);
         if (active)

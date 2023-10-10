@@ -132,7 +132,7 @@ public class GuiNPCBankChest extends GuiContainerNPCInterface implements IGuiDat
         itemRender.renderItemAndEffectIntoGUI(fontRendererObj, mc.renderEngine, item, x,y);
         itemRender.renderItemOverlayIntoGUI(fontRendererObj, mc.renderEngine, item, x,y);
 
-        if (this.func_146978_c(x - guiLeft, y - guiTop, 16, 16, mouseX, mouseY))
+        if (this.isPointInRegion(x - guiLeft, y - guiTop, 16, 16, mouseX, mouseY))
         {
             this.renderToolTip(item, mouseX, mouseY);
         }

@@ -133,7 +133,7 @@ public class GuiNpcCompanionTalents extends GuiNPCInterface{
             this.drawTexturedModalRect(guiLeft + 4, guiTop + 20, 10, 69, (int)(v * 162), 5);
         }
         String s = role.currentExp + "\\" + role.getMaxExp();
-        mc.fontRenderer.drawString(s, guiLeft + xSize / 2 - mc.fontRenderer.getStringWidth(s) / 2, guiTop + 10, CustomNpcResourceListener.DefaultTextColor);
+        mc.fontRendererObj.drawString(s, guiLeft + xSize / 2 - mc.fontRendererObj.getStringWidth(s) / 2, guiTop + 10, CustomNpcResourceListener.DefaultTextColor);
 
 		for(GuiTalent talent : talents.values()){
 			talent.drawScreen(i, j, f);
@@ -175,12 +175,12 @@ public class GuiNpcCompanionTalents extends GuiNPCInterface{
 	        GL11.glEnable(GL11.GL_LIGHTING);
 	        GL11.glEnable(GL12.GL_RESCALE_NORMAL);
 	        RenderHelper.enableGUIStandardItemLighting();
-	        itemRender.renderItemAndEffectIntoGUI(mc.fontRenderer, mc.getTextureManager(), item, x + 4, y + 4);
-	        itemRender.renderItemOverlayIntoGUI(mc.fontRenderer, mc.getTextureManager(), item, x + 4, y + 4);
+	        itemRender.renderItemAndEffectIntoGUI(mc.fontRendererObj, mc.getTextureManager(), item, x + 4, y + 4);
+	        itemRender.renderItemOverlayIntoGUI(mc.fontRendererObj, mc.getTextureManager(), item, x + 4, y + 4);
 	        RenderHelper.disableStandardItemLighting(); 
 	        GL11.glDisable(GL11.GL_LIGHTING);
 	        GL11.glTranslatef(0, 0, 200);
-            this.drawCenteredString(mc.fontRenderer, role.getTalentLevel(talent) + "", x + 20, y + 16, 0xFFFFFF);
+            this.drawCenteredString(mc.fontRendererObj, role.getTalentLevel(talent) + "", x + 20, y + 16, 0xFFFFFF);
 	        itemRender.zLevel = 0.0F;
 	        this.zLevel = 0.0F;
 	        GL11.glPopMatrix();

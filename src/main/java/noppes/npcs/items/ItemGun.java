@@ -23,7 +23,7 @@ public class ItemGun extends ItemNpcInterface implements IProjectileCallback{
 		super(par1);
         this.maxStackSize = 1;
 		this.material = material;
-        this.setMaxDamage(material.getMaxUses());
+        this.setMaxDurability(material.getMaxUses());
         setCreativeTab(CustomItems.tabWeapon);
 	}
 	@Override

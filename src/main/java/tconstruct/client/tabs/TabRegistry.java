@@ -40,7 +40,7 @@ public class TabRegistry {
 
 	private static Minecraft mc = FMLClientHandler.instance().getClient();
 
-	public static void openInventoryGui() {
+	public static void openChestGui() {
 		mc.thePlayer.sendQueue.addToSendQueue(new C0DPacketCloseWindow(
 				mc.thePlayer.openContainer.windowId));
 		GuiInventory inventory = new GuiInventory(mc.thePlayer);

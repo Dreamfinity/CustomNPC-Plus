@@ -307,7 +307,7 @@ public class PlayerDataController {
 	}
 
 	public PlayerData getDataFromUsername(String username){
-		EntityPlayer player = MinecraftServer.getServer().getConfigurationManager().func_152612_a(username);
+		EntityPlayer player = MinecraftServer.getServer().getConfigurationManager().getPlayerByUsername(username);
 		PlayerData data = null;
 		if(player == null){
 			for(String name : nameUUIDs.keySet()){
@@ -327,7 +327,7 @@ public class PlayerDataController {
 	public void addPlayerMessage(String username, PlayerMail mail) {
 		mail.time = System.currentTimeMillis();
 
-		EntityPlayer player = MinecraftServer.getServer().getConfigurationManager().func_152612_a(username);
+		EntityPlayer player = MinecraftServer.getServer().getConfigurationManager().getPlayerByUsername(username);
 		PlayerData data = getDataFromUsername(username);
 		data.mailData.playermail.add(mail.copy());
 		data.save();

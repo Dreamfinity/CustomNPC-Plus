@@ -29,7 +29,7 @@ public class CompanionFoodStats {
     }
 
     public void onFoodEaten(ItemFood food, ItemStack itemstack){
-        this.addStats(food.func_150905_g(itemstack), food.func_150906_h(itemstack));
+        this.addStats(food.getHealAmount(itemstack), food.getSaturationModifier(itemstack));
     }
 
     /**

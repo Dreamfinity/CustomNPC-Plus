@@ -17,7 +17,7 @@ public class ContainerCrate extends Container
         this.lowerChestInventory = par2IInventory;
         this.upperChestInventory = par1IInventory;
         this.numRows = par2IInventory.getSizeInventory() / 9;
-        par2IInventory.openInventory();
+        par2IInventory.openChest();
         int i = (this.numRows - 4) * 18;
         int j;
         int k;
@@ -93,7 +93,7 @@ public class ContainerCrate extends Container
     public void onContainerClosed(EntityPlayer par1EntityPlayer)
     {
         super.onContainerClosed(par1EntityPlayer);
-        this.lowerChestInventory.closeInventory();
+        this.lowerChestInventory.closeChest();
     }
 
     /**

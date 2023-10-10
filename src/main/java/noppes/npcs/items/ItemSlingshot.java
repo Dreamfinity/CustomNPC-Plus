@@ -16,7 +16,7 @@ public class ItemSlingshot extends ItemNpcInterface{
 	public ItemSlingshot(int par1) {
 		super(par1);
         this.maxStackSize = 1;
-        this.setMaxDamage(384);
+        this.setMaxDurability(384);
         setCreativeTab(CustomItems.tabWeapon);
 	}
 	@Override

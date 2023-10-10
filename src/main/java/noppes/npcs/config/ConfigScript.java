@@ -147,7 +147,7 @@ public class ConfigScript
     }
 
     public static boolean isScriptDev(EntityPlayer player) {
-        if(ScriptOpsOnly && !MinecraftServer.getServer().getConfigurationManager().func_152596_g(player.getGameProfile()) ||
+        if(ScriptOpsOnly && !MinecraftServer.getServer().getConfigurationManager().canSendCommands(player.getGameProfile()) ||
                 Developer.ScriptUser.contains(player.getUniqueID()) || Developer.Universal.contains(player.getUniqueID())){
             return true;
         } else return ScriptDevIDs.isEmpty();

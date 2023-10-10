@@ -14,7 +14,7 @@ public class ItemMachineGun extends ItemNpcInterface{
 
 	public ItemMachineGun(int par1) {
 		super(par1);
-        this.setMaxDamage(80);
+        this.setMaxDurability(80);
         setCreativeTab(CustomItems.tabWeapon);
 	}
     public void onPlayerStoppedUsing(ItemStack stack, World par2World, EntityPlayer player, int count) {

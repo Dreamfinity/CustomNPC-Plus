@@ -483,7 +483,7 @@ public class NpcAPI extends AbstractNpcAPI {
      * @return The Player with name. Null is returned when the player isn't found
      */
     public IPlayer<?> getPlayer(String username) {
-        EntityPlayerMP player = MinecraftServer.getServer().getConfigurationManager().func_152612_a(username);
+        EntityPlayerMP player = MinecraftServer.getServer().getConfigurationManager().getPlayerByUsername(username);
         return player == null ? null : (IPlayer<?>) NpcAPI.Instance().getIEntity(player);
     }
 

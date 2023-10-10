@@ -27,7 +27,7 @@ public class GuiNpcLabel {
 			fontRenderer.drawString(label, x, y, color);
 	}
 	public void center(int width) {
-		int size = Minecraft.getMinecraft().fontRenderer.getStringWidth(label);
+		int size = Minecraft.getMinecraft().fontRendererObj.getStringWidth(label);
 		x += (width - size) / 2;
 	}
 }

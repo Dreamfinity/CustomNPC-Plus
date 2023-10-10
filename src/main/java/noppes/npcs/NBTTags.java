@@ -436,7 +436,7 @@ public class NBTTags {
 
 	public static NBTTagCompound NBTMerge(NBTTagCompound data, NBTTagCompound merge) {
 		NBTTagCompound compound = (NBTTagCompound) data.copy();
-		Set<String> names = merge.func_150296_c();
+		Set<String> names = merge.getKeySet();
 		for(String name : names){
 			NBTBase base = merge.getTag(name);
 			if(base.getId() == 10)

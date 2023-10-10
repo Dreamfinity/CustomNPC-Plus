@@ -43,7 +43,7 @@ public class BlockTallLamp extends BlockContainer{
     	if(meta >= 7)
     		j--;
     	TileColorable tile = (TileColorable) par1World.getTileEntity(i, j, k);
-    	int color = BlockColored.func_150031_c(item.getItemDamage());
+    	int color = BlockColored.func_150031_c(item.getMetadata());
     	if(tile.color != color){
     		NoppesUtilServer.consumeItemStack(1, player);
 			tile.color = color;
@@ -83,10 +83,10 @@ public class BlockTallLamp extends BlockContainer{
 	
 	        TileColorable tile = (TileColorable) par1World.getTileEntity(par2, par3, par4);
 	    	tile.rotation = l;
-	    	tile.color = 15 - par6ItemStack.getItemDamage();
+	    	tile.color = 15 - par6ItemStack.getMetadata();
 	    	
-	        par1World.setBlockMetadataWithNotify(par2, par3, par4, par6ItemStack.getItemDamage() , 2);
-	        par1World.setBlock(par2, par3 + 1, par4, this, par6ItemStack.getItemDamage() + 7, 2);
+	        par1World.setBlockMetadataWithNotify(par2, par3, par4, par6ItemStack.getMetadata() , 2);
+	        par1World.setBlock(par2, par3 + 1, par4, this, par6ItemStack.getMetadata() + 7, 2);
     	}
     }
 
@@ -115,7 +115,7 @@ public class BlockTallLamp extends BlockContainer{
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void registerBlockIcons(IIconRegister par1IconRegister)
+    public void registerIcons(IIconRegister par1IconRegister)
     {
     	
     }

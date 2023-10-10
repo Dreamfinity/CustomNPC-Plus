@@ -18,7 +18,7 @@ public class ItemOrb extends ItemNpcInterface{
 
     @Override
     public int getColorFromItemStack(ItemStack par1ItemStack, int par2){
-    	float[] color = EntitySheep.fleeceColorTable[par1ItemStack.getItemDamage()];
+    	float[] color = EntitySheep.fleeceColorTable[par1ItemStack.getMetadata()];
         return new Color(color[0],color[1],color[2]).getRGB();
     }
     

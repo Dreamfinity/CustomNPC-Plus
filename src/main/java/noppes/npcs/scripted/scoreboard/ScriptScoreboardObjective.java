@@ -38,7 +38,7 @@ public class ScriptScoreboardObjective implements IScoreboardObjective {
 	 * @return Returns the criteria string
 	 */
 	public String getCriteria(){
-		return objective.getCriteria().func_96636_a();
+		return objective.getCriteria().getName();
 	}
 	
 	/**

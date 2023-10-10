@@ -37,7 +37,7 @@ public class ScriptAnimal<T extends EntityAnimal> extends ScriptLiving<T> implem
 	}
 
 	public void setFollowPlayer(IPlayer player) {
-		this.entity.func_146082_f((EntityPlayer) player.getMCEntity());
+		this.entity.setInLove((EntityPlayer) player.getMCEntity());
 	}
 
 	public IPlayer followingPlayer() {

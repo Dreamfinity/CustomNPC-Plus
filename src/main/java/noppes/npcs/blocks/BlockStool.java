@@ -64,7 +64,7 @@ public class BlockStool extends BlockContainer{
     	TileColorable tile = (TileColorable) par1World.getTileEntity(par2, par3, par4);
     	tile.rotation = l;
     	
-        par1World.setBlockMetadataWithNotify(par2, par3, par4, par6ItemStack.getItemDamage() , 2);
+        par1World.setBlockMetadataWithNotify(par2, par3, par4, par6ItemStack.getMetadata() , 2);
     	
     }
 
@@ -84,7 +84,7 @@ public class BlockStool extends BlockContainer{
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void registerBlockIcons(IIconRegister par1IconRegister)
+    public void registerIcons(IIconRegister par1IconRegister)
     {
     	
     }

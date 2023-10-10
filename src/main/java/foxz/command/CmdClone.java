@@ -124,9 +124,9 @@ public class CmdClone extends ChMcLogger {
         	return false;
         }
         World world = pcParam.getEntityWorld();
-        double posX = pcParam.getPlayerCoordinates().posX;
-        double posY = pcParam.getPlayerCoordinates().posY;
-        double posZ = pcParam.getPlayerCoordinates().posZ;
+        double posX = pcParam.getCommandSenderPosition().posX;
+        double posY = pcParam.getCommandSenderPosition().posY;
+        double posZ = pcParam.getCommandSenderPosition().posZ;
         
         if(args.length > 2){
 	        String location = args[2];
@@ -148,9 +148,9 @@ public class CmdClone extends ChMcLogger {
 	                return false;
 	            }
 	            try{
-		            posX = CommandBase.func_110666_a(pcParam, posX, par[0]);
-		            posY = CommandBase.func_110665_a(pcParam, posY, par[1].trim(), 0, 0);
-		            posZ = CommandBase.func_110666_a(pcParam, posZ, par[2]);
+		            posX = CommandBase.clamp_coord(pcParam, posX, par[0]);
+		            posY = CommandBase.clamp_double(pcParam, posY, par[1].trim(), 0, 0);
+		            posZ = CommandBase.clamp_coord(pcParam, posZ, par[2]);
 	            }  catch(NumberFormatException ex){
 	            	sendmessage("Location should be in numbers");
 	            	return false;
@@ -212,9 +212,9 @@ public class CmdClone extends ChMcLogger {
         	return false;
         }
         World world = pcParam.getEntityWorld();
-        double posX = pcParam.getPlayerCoordinates().posX;
-        double posY = pcParam.getPlayerCoordinates().posY;
-        double posZ = pcParam.getPlayerCoordinates().posZ;
+        double posX = pcParam.getCommandSenderPosition().posX;
+        double posY = pcParam.getCommandSenderPosition().posY;
+        double posZ = pcParam.getCommandSenderPosition().posZ;
         
         if(args.length > 4){
 	        String location = args[4];
@@ -236,9 +236,9 @@ public class CmdClone extends ChMcLogger {
 	                return false;
 	            }
 	            try{
-		            posX = CommandBase.func_110666_a(pcParam, posX, par[0]);
-		            posY = CommandBase.func_110665_a(pcParam, posY, par[1].trim(), 0, 0);
-		            posZ = CommandBase.func_110666_a(pcParam, posZ, par[2]);
+		            posX = CommandBase.clamp_coord(pcParam, posX, par[0]);
+		            posY = CommandBase.clamp_double(pcParam, posY, par[1].trim(), 0, 0);
+		            posZ = CommandBase.clamp_coord(pcParam, posZ, par[2]);
 	            }  catch(NumberFormatException ex){
 	            	sendmessage("Location should be in numbers");
 	            	return false;

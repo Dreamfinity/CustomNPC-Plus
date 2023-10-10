@@ -146,7 +146,7 @@ public class NoppesUtilPlayer {
     	HashMap<ItemStack,Integer> cd = new HashMap<ItemStack,Integer>();
     	for(int i : role.inventory.items.keySet()){
     		ItemStack is = role.inventory.items.get(i);
-    		if(is == null || is.getItem() != currency.getItem() || is.getHasSubtypes() && is.getItemDamage() != currency.getItemDamage())
+    		if(is == null || is.getItem() != currency.getItem() || is.getHasSubtypes() && is.getMetadata() != currency.getMetadata())
     			continue;
     		int days = 1;
     		if(role.rates.containsKey(i))
@@ -474,7 +474,7 @@ public class NoppesUtilPlayer {
         if (item.getItem() != item2.getItem() ){
             return false;
         }
-		if (!ignoreDamage && item.getItemDamage() != -1 && item.getItemDamage() != item2.getItemDamage()){
+		if (!ignoreDamage && item.getMetadata() != -1 && item.getMetadata() != item2.getMetadata()){
             return false;
         }
         if(!ignoreNBT && item.stackTagCompound != null && (item2.stackTagCompound == null || !item.stackTagCompound.equals(item2.stackTagCompound))){

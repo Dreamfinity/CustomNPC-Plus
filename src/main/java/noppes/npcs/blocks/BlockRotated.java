@@ -62,7 +62,7 @@ public abstract class BlockRotated extends BlockContainer{
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void registerBlockIcons(IIconRegister par1IconRegister)
+    public void registerIcons(IIconRegister par1IconRegister)
     {
     	
     }

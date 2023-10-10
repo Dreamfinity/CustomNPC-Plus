@@ -16,13 +16,13 @@ public class ItemPlaceholder extends ItemBlock{
 	
 	@Override
     public String getUnlocalizedName(ItemStack par1ItemStack){
-        return super.getUnlocalizedName(par1ItemStack) + "_" + par1ItemStack.getItemDamage();
+        return super.getUnlocalizedName(par1ItemStack) + "_" + par1ItemStack.getMetadata();
     }
 	
 	@Override
     @SideOnly(Side.CLIENT)
     public IIcon getIconFromDamage(int par1)
     {
-        return this.field_150939_a.getIcon(0, par1);
+        return this.blockInstance.getIcon(0, par1);
     }
 }

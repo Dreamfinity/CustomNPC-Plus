@@ -26,7 +26,7 @@ public class SlotNpcBankCurrency extends Slot
     	if(item == null)
     		return false;
 		if(item.getItem() == itemstack.getItem()){
-			if(!item.getHasSubtypes() || item.getItemDamage() == itemstack.getItemDamage())
+			if(!item.getHasSubtypes() || item.getMetadata() == itemstack.getMetadata())
 				return true;
 		}
 		return false;

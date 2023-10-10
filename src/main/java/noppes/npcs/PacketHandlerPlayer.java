@@ -222,7 +222,7 @@ public class PacketHandlerPlayer{
 			}
 			
 			PlayerMail mail = new PlayerMail();
-            //String s = player.func_145748_c_().getFormattedText();
+            //String s = player.	getFormattedCommandSenderName().getFormattedText();
             String s = player.getDisplayName();
             if(!s.equals(player.getCommandSenderName()))
             	s += "(" + player.getCommandSenderName() + ")";
@@ -295,14 +295,14 @@ public class PacketHandlerPlayer{
 			ItemStack book = ItemStack.loadItemStackFromNBT(Server.readNBT(buffer));
 			if(book == null)
 				return;
-			if(book.getItem() == Items.writable_book && !sign && ItemWritableBook.func_150930_a(book.getTagCompound())){
+			if(book.getItem() == Items.writable_book && !sign && ItemWritableBook.validBookPageTagContents(book.getTagCompound())){
 				tile.book.setTagInfo("pages", book.getTagCompound().getTagList("pages", 8));
 			}
 			if(book.getItem() == Items.written_book && sign && ItemEditableBook.validBookTagContents(book.getTagCompound())){
 				tile.book.setTagInfo("author", new NBTTagString(player.getCommandSenderName()));
 				tile.book.setTagInfo("title", new NBTTagString(book.getTagCompound().getString("title")));
                 tile.book.setTagInfo("pages", book.getTagCompound().getTagList("pages", 8));
-                tile.book.func_150996_a(Items.written_book);
+                tile.book.setItem(Items.written_book);
 			}
 		}
 	}

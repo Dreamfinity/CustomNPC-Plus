@@ -107,7 +107,7 @@ public class NoppesUtilServer {
         String resourcelocation = Item.itemRegistry.getNameForObject(item.getItem());
         nbt.setString("id", resourcelocation == null ? "minecraft:air" : resourcelocation.toString());
         nbt.setByte("Count", (byte)item.stackSize);
-        nbt.setShort("Damage", (short)item.getItemDamage());
+        nbt.setShort("Damage", (short)item.getMetadata());
 
         if (item.stackTagCompound != null){
             nbt.setTag("tag", item.stackTagCompound);
@@ -129,10 +129,10 @@ public class NoppesUtilServer {
         ItemStack itemstack = new ItemStack(item);
 
         itemstack.stackSize = nbt.getByte("Count");
-        itemstack.setItemDamage(nbt.getShort("Damage"));
+        itemstack.setMetadata(nbt.getShort("Damage"));
 
-        if (itemstack.getItemDamage() < 0){
-        	itemstack.setItemDamage(0);
+        if (itemstack.getMetadata() < 0){
+        	itemstack.setMetadata(0);
         }
 
         if (nbt.hasKey("tag", 10)){
@@ -206,7 +206,7 @@ public class NoppesUtilServer {
         tile.zCoord = MathHelper.floor_double(executer.posZ);
         
         CommandBlockLogic logic = tile.func_145993_a();
-        logic.func_145752_a(command);
+        logic.setCommand(command);
         logic.func_145754_b("@"+name);
         logic.func_145755_a(executer.worldObj);
 	}
@@ -219,7 +219,7 @@ public class NoppesUtilServer {
 		tile.zCoord = 0;
 
 		CommandBlockLogic logic = tile.func_145993_a();
-		logic.func_145752_a(command);
+		logic.setCommand(command);
 		logic.func_145754_b("@"+name);
 		logic.func_145755_a(world);
 	}
@@ -485,7 +485,7 @@ public class NoppesUtilServer {
 			return;
 		String name = Server.readString(buffer);
 		EnumPlayerData type = EnumPlayerData.values()[id];
-        EntityPlayer pl = MinecraftServer.getServer().getConfigurationManager().func_152612_a(name);
+        EntityPlayer pl = MinecraftServer.getServer().getConfigurationManager().getPlayerByUsername(name);
 		PlayerData playerdata = null;
 		if(pl == null)
 			playerdata = PlayerDataController.Instance.getDataFromUsername(name);
@@ -675,7 +675,7 @@ public class NoppesUtilServer {
 		if(player.openContainer instanceof ContainerManageBanks){
 			((ContainerManageBanks)player.openContainer).setBank(bank);
 		}
-		player.sendContainerAndContentsToPlayer(player.openContainer, player.openContainer.getInventory());
+		player.updateCraftingInventory(player.openContainer, player.openContainer.getInventory());
 	}
 
 	public static void sendNearbyNpcs(EntityPlayerMP player) {
@@ -765,7 +765,7 @@ public class NoppesUtilServer {
 	}
 
 	public static boolean isOp(EntityPlayer player) {
-		return MinecraftServer.getServer().getConfigurationManager().func_152596_g(player.getGameProfile());
+		return MinecraftServer.getServer().getConfigurationManager().canSendCommands(player.getGameProfile());
 	}
 
 

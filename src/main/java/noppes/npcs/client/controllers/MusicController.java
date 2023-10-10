@@ -41,7 +41,7 @@ public class MusicController {
 		playingEntity = entity;
 		playingResource = new ResourceLocation(music);
 		SoundHandler handler = Minecraft.getMinecraft().getSoundHandler();
-        playing = PositionedSoundRecord.func_147675_a(playingResource, (float)entity.posX, (float)entity.posY, (float)entity.posZ);
+        playing = PositionedSoundRecord.createRecordSoundAtPosition(playingResource, (float)entity.posX, (float)entity.posY, (float)entity.posZ);
         handler.playSound(playing);
 	}
 
@@ -54,7 +54,7 @@ public class MusicController {
 		playingEntity = entity;
 
 		SoundHandler handler = Minecraft.getMinecraft().getSoundHandler();
-        playing = PositionedSoundRecord.func_147673_a(playingResource);
+        playing = PositionedSoundRecord.createPositionedSoundRecord(playingResource);
         handler.playSound(playing);
 	}
 	

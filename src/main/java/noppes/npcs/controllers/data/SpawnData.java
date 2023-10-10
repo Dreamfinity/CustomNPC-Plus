@@ -49,7 +49,7 @@ public class SpawnData extends WeightedRandom.Item implements INaturalSpawn {
 		}
 
 		this.spawnCompounds.clear();
-		Set<?> keys = compound.func_150296_c();
+		Set<?> keys = compound.getKeySet();
 		for (Object key : keys) {
 			if (((String)key).startsWith("SpawnCompound")) {
 				int i = Integer.parseInt(((String)key).replace("SpawnCompound",""));

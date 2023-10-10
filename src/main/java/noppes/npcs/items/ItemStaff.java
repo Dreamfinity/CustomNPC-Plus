@@ -136,7 +136,7 @@ public class ItemStaff extends ItemNpcInterface implements IProjectileCallback{
 		if(stack.getItem() == CustomItems.staffEmerald){
 			return new ItemStack(CustomItems.spellArcane);
 		}
-		return new ItemStack(CustomItems.orb,1,stack.getItemDamage());
+		return new ItemStack(CustomItems.orb,1,stack.getMetadata());
 	}
 	public void spawnParticle(ItemStack stack, EntityPlayer player){
 		if(stack.getItem() == CustomItems.staffWood){

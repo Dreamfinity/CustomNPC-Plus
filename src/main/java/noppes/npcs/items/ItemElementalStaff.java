@@ -20,7 +20,7 @@ public class ItemElementalStaff extends ItemStaff{
 
     @Override
     public int getColorFromItemStack(ItemStack par1ItemStack, int par2){
-    	float[] color = EntitySheep.fleeceColorTable[par1ItemStack.getItemDamage()];
+    	float[] color = EntitySheep.fleeceColorTable[par1ItemStack.getMetadata()];
         return new Color(color[0],color[1],color[2]).getRGB();
     }
     
@@ -38,11 +38,11 @@ public class ItemElementalStaff extends ItemStaff{
 
 	@Override
 	public ItemStack getProjectile(ItemStack stack){
-		return new ItemStack(CustomItems.orb,1,stack.getItemDamage());
+		return new ItemStack(CustomItems.orb,1,stack.getMetadata());
 	}
 	
 	@Override
 	public void spawnParticle(ItemStack stack, EntityPlayer player){
-		CustomNpcs.proxy.spawnParticle(player,"Spell",stack.getItemDamage(),4);
+		CustomNpcs.proxy.spawnParticle(player,"Spell",stack.getMetadata(),4);
 	}
 }

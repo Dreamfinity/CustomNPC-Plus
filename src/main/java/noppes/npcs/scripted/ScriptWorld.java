@@ -132,7 +132,7 @@ public class ScriptWorld implements IWorld {
 	}
 
 	public boolean canSnowAt(int x, int y, int z, boolean checkLight){
-		return world.func_147478_e(x,y,z,checkLight);
+		return world.canSnowAt(x,y,z,checkLight);
 	}
 
 	public boolean canSnowAtBody(IPos pos, boolean checkLight) {
@@ -359,7 +359,7 @@ public class ScriptWorld implements IWorld {
 	}
 
 	public boolean isBlockFullCube(int x, int y, int z){
-		return world.func_147469_q(x,y,z);
+		return world.isBlockFullCube(x,y,z);
 	}
 
 	public boolean isBlockFullCube(IPos pos){
@@ -379,7 +379,7 @@ public class ScriptWorld implements IWorld {
 	}
 
 	public boolean canLightningStrikeAt(int x, int y, int z){
-		return world.canLightningStrikeAt(x,y,z);
+		return world.isRainingAt(x,y,z);
 	}
 
 	public boolean canLightningStrikeAt(IPos pos){
@@ -536,7 +536,7 @@ public class ScriptWorld implements IWorld {
 				Block block = this.world.getBlock(l, i1, j1);
 				int k1 = this.world.getBlockMetadata(l, i1, j1);
 
-				if (block.canCollideCheck(k1, false))
+				if (block.canStopRayTrace(k1, false))
 				{
 					MovingObjectPosition movingobjectposition = block.collisionRayTrace(this.world, l, i1, j1, startVec, endVec);
 
@@ -707,7 +707,7 @@ public class ScriptWorld implements IWorld {
 					MovingObjectPosition movingobjectposition1 = block1.collisionRayTrace(this.world, l, i1, j1, startVec, endVec);
 					if (movingobjectposition1 != null)
 					{
-						if (block1.canCollideCheck(l1, false) && stopOnBlock ||
+						if (block1.canStopRayTrace(l1, false) && stopOnBlock ||
 							block1.getMaterial().isLiquid() && stopOnLiquid ||
 							!(block1 instanceof BlockAir) && block1.getCollisionBoundingBoxFromPool(this.world,l,i1,j1) == null && !stopOnCollision)
 						{
@@ -851,7 +851,7 @@ public class ScriptWorld implements IWorld {
 					}
 				}
 
-				if (block.canCollideCheck(k1, false))
+				if (block.canStopRayTrace(k1, false))
 				{
 					MovingObjectPosition movingobjectposition = block.collisionRayTrace(this.world, l, i1, j1, startVec, endVec);
 
@@ -1029,7 +1029,7 @@ public class ScriptWorld implements IWorld {
 					MovingObjectPosition movingobjectposition1 = block1.collisionRayTrace(this.world, l, i1, j1, startVec, endVec);
 					if (movingobjectposition1 != null)
 					{
-						if (block1.canCollideCheck(l1, false) && stopOnBlock ||
+						if (block1.canStopRayTrace(l1, false) && stopOnBlock ||
 								block1.getMaterial().isLiquid() && stopOnLiquid ||
 								!(block1 instanceof BlockAir) && block1.getCollisionBoundingBoxFromPool(this.world,l,i1,j1) == null && !stopOnCollision)
 						{
@@ -1079,7 +1079,7 @@ public class ScriptWorld implements IWorld {
 	}
 
 	public IPlayer getPlayerByUUID(String uuid){
-		return (IPlayer) NpcAPI.Instance().getIEntity(world.func_152378_a(UUID.fromString(uuid)));
+		return (IPlayer) NpcAPI.Instance().getIEntity(world.getPlayerEntityByUUID(UUID.fromString(uuid)));
 	}
 
 	/**
@@ -1215,8 +1215,8 @@ public class ScriptWorld implements IWorld {
 			return null;
 		NBTBase base = compound.getTag(key);
 		if(base instanceof NBTPrimitive)
-			return ((NBTPrimitive)base).func_150286_g();
-		return ((NBTTagString)base).func_150285_a_();
+			return ((NBTPrimitive)base).getDouble();
+		return ((NBTTagString)base).getString();
 	}
 
 	/**
@@ -1260,7 +1260,7 @@ public class ScriptWorld implements IWorld {
 	public String[] getStoredDataKeys() {
 		NBTTagCompound compound = ScriptController.Instance.compound;
 		if (compound != null) {
-			return (String[]) compound.func_150296_c().toArray();
+			return (String[]) compound.getKeySet().toArray();
 		}
 		return new String[0];
 	}

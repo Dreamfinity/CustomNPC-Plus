@@ -115,7 +115,7 @@ public class Server {
 	public static NBTTagCompound readNBT(ByteBuf buffer) throws IOException {
 		byte[] bytes = new byte[buffer.readShort()];
 		buffer.readBytes(bytes);
-		return CompressedStreamTools.func_152457_a(bytes, new NBTSizeTracker(2097152L));
+		return CompressedStreamTools.decompress(bytes, new NBTSizeTracker(2097152L));
 	}
 	
 	public static void writeString(ByteBuf buffer, String s){

@@ -284,7 +284,7 @@ public class GuiMailmanWrite extends GuiContainerNPCInterface implements ITextfi
     {
         if (this.bookPages != null && this.currPage >= 0 && this.currPage < this.bookPages.tagCount())
         {
-        	bookPages.func_150304_a(currPage, new NBTTagString(par1Str));
+        	bookPages.setTag(currPage, new NBTTagString(par1Str));
         }
     }
 
@@ -292,7 +292,7 @@ public class GuiMailmanWrite extends GuiContainerNPCInterface implements ITextfi
     {
         String s1 = this.func_74158_i();
         String s2 = s1 + par1Str;
-        int i = mc.fontRenderer.splitStringWidth(s2 + "" + EnumChatFormatting.BLACK + "_", 118);
+        int i = mc.fontRendererObj.splitStringWidth(s2 + "" + EnumChatFormatting.BLACK + "_", 118);
 
         if (i <= 118 && s2.length() < 256)
         {
@@ -329,7 +329,7 @@ public class GuiMailmanWrite extends GuiContainerNPCInterface implements ITextfi
         }
         
         if(canEdit){
-	        if (mc.fontRenderer.getBidiFlag())
+	        if (mc.fontRendererObj.getBidiFlag())
 	        {
 	            s1 = s1 + "_";
 	        }
@@ -343,9 +343,9 @@ public class GuiMailmanWrite extends GuiContainerNPCInterface implements ITextfi
 	        }
         }
 
-        l = mc.fontRenderer.getStringWidth(s);
-        mc.fontRenderer.drawString(s, guiLeft - l + this.bookImageWidth - 44, guiTop + 18, 0);
-        mc.fontRenderer.drawSplitString(s1, guiLeft + 36, guiTop + 18 + 16, 116, 0);
+        l = mc.fontRendererObj.getStringWidth(s);
+        mc.fontRendererObj.drawString(s, guiLeft - l + this.bookImageWidth - 44, guiTop + 18, 0);
+        mc.fontRendererObj.drawSplitString(s1, guiLeft + 36, guiTop + 18 + 16, 116, 0);
 
         this.drawGradientRect(guiLeft + 175, guiTop + 136, guiLeft + 269, guiTop + 154, -1072689136, -804253680);
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);

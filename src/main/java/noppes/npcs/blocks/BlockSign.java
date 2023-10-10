@@ -31,7 +31,7 @@ public class BlockSign extends BlockRotated{
         TileSign tile = (TileSign) par1World.getTileEntity(par2, par3, par4);
     	tile.rotation = l;
     	tile.time = System.currentTimeMillis();
-        par1World.setBlockMetadataWithNotify(par2, par3, par4, par6ItemStack.getItemDamage() , 2);
+        par1World.setBlockMetadataWithNotify(par2, par3, par4, par6ItemStack.getMetadata() , 2);
     	if(par5EntityLivingBase instanceof EntityPlayer && par1World.isRemote)
     		((EntityPlayer)par5EntityLivingBase).addChatComponentMessage(new ChatComponentTranslation("availability.editIcon"));
     }

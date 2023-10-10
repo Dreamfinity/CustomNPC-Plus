@@ -131,7 +131,7 @@ public class ScriptLivingBase<T extends EntityLivingBase> extends ScriptEntity<T
 	}
 
 	public int getAttackTargetTime() {
-		return this.entity.func_142015_aE();
+		return this.entity.getRevengeTimer();
 	}
 
 	public void setLastAttacker(IEntity p_130011_1_) {

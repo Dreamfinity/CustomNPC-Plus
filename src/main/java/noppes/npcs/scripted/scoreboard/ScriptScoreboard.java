@@ -70,7 +70,7 @@ public class ScriptScoreboard implements IScoreboard {
 		if(hasObjective(objective))
 			return null;
         
-		IScoreObjectiveCriteria icriteria = (IScoreObjectiveCriteria)IScoreObjectiveCriteria.field_96643_a.get(criteria);
+		IScoreObjectiveCriteria icriteria = (IScoreObjectiveCriteria)IScoreObjectiveCriteria.INSTANCES.get(criteria);
         if(icriteria == null)
         	return null;
         
@@ -94,7 +94,7 @@ public class ScriptScoreboard implements IScoreboard {
 				score < Integer.MIN_VALUE || score > Integer.MAX_VALUE)
 			return;
 
-        Score sco = board.func_96529_a(player, objec);
+        Score sco = board.getValueFromObjective(player, objec);
         sco.setScorePoints(score);
 	}
 
@@ -114,7 +114,7 @@ public class ScriptScoreboard implements IScoreboard {
 		if(objec == null || objec.getCriteria().isReadOnly())
 			return 0;
 
-        return board.func_96529_a(player, objec).getScorePoints(); 
+        return board.getValueFromObjective(player, objec).getScorePoints();
 	}
 
 	public int getPlayerScore(IPlayer player, String objective, String datatag){

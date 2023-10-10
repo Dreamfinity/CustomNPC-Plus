@@ -292,7 +292,7 @@ public class RenderCNPCPlayer extends RenderPlayer {
                     GL11.glRotatef(7F, 0, 0, 1);
                     GL11.glTranslatef(0.015F, 0.0375F, -0.0025F);
                 }
-                this.modelBipedMain.onGround = 0.0F;
+                this.modelBipedMain.swingProgress = 0.0F;
                 this.modelBipedMain.setRotationAngles(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F, player);
                 this.modelBipedMain.bipedRightArm.render(0.0625F);
 

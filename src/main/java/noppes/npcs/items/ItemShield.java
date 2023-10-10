@@ -13,7 +13,7 @@ public class ItemShield extends ItemNpcInterface{
 	public ItemShield(int par1, EnumNpcToolMaterial material) {
 		super(par1);
 		this.material = material;
-        this.setMaxDamage(material.getMaxUses());
+        this.setMaxDurability(material.getMaxUses());
         setCreativeTab(CustomItems.tabWeapon);
 	}
 

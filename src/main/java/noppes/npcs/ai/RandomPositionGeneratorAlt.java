@@ -77,7 +77,7 @@ public class RandomPositionGeneratorAlt
         if (par0EntityCreature.hasHome())
         {
             double d0 = (double)(par0EntityCreature.getHomePosition().getDistanceSquared(MathHelper.floor_double(par0EntityCreature.posX), MathHelper.floor_double(par0EntityCreature.posY), MathHelper.floor_double(par0EntityCreature.posZ)) + 4.0F);
-            double d1 = (double)(par0EntityCreature.func_110174_bM() + (float)par1);
+            double d1 = (double)(par0EntityCreature.getMaximumHomeDistance() + (float)par1);
             flag1 = d0 < d1 * d1;
         }
         else

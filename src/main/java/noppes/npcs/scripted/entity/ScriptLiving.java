@@ -99,7 +99,7 @@ public class ScriptLiving<T extends EntityLiving> extends ScriptLivingBase<T> im
 	}
 
 	public void enablePersistence() {
-		this.entity.func_110163_bv();
+		this.entity.enablePersistence();
 	}
 
 	public void setCustomNameTag(String text)

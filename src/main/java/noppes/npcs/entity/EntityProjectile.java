@@ -286,7 +286,7 @@ public class EntityProjectile extends EntityThrowable {
             }
 	        Vec3 vec3 = Vec3.createVectorHelper(this.posX, this.posY, this.posZ);
 	        Vec3 vec31 = Vec3.createVectorHelper(this.posX + this.motionX, this.posY + this.motionY, this.posZ + this.motionZ);
-	        MovingObjectPosition movingobjectposition = this.worldObj.func_147447_a(vec3, vec31, false, true, false);//rayTraceBlocks_do_do
+	        MovingObjectPosition movingobjectposition = this.worldObj.rayTraceBlocks(vec3, vec31, false, true, false);//rayTraceBlocks_do_do
 	        vec3 = Vec3.createVectorHelper(this.posX, this.posY, this.posZ);
 	        vec31 = Vec3.createVectorHelper(this.posX + this.motionX, this.posY + this.motionY, this.posZ + this.motionZ);
 	
@@ -418,7 +418,7 @@ public class EntityProjectile extends EntityThrowable {
 	        	this.worldObj.spawnParticle(this.dataWatcher.getWatchableObjectString(22), this.posX, this.posY, this.posZ, 0.0D, 0.0D, 0.0D);
 	        }
 	        this.setPosition(this.posX, this.posY, this.posZ);
-	        this.func_145775_I();//doBlockCollisions
+	        this.doBlockCollisions();//doBlockCollisions
         }
     }
     public boolean isBlock(){
@@ -771,9 +771,9 @@ public class EntityProjectile extends EntityThrowable {
         if (par1NBTTagCompound.hasKey("direction"))
         {
             NBTTagList nbttaglist = par1NBTTagCompound.getTagList("direction",6);
-            this.motionX = nbttaglist.func_150309_d(0);
-            this.motionY = nbttaglist.func_150309_d(1);
-            this.motionZ = nbttaglist.func_150309_d(2);
+            this.motionX = nbttaglist.getDoubleAt(0);
+            this.motionY = nbttaglist.getDoubleAt(1);
+            this.motionZ = nbttaglist.getDoubleAt(2);
         }
         
         NBTTagCompound var2 = par1NBTTagCompound.getCompoundTag("Item");
@@ -793,7 +793,7 @@ public class EntityProjectile extends EntityThrowable {
 		try{
 	    	UUID uuid = UUID.fromString(throwerName);
 	        if (this.thrower == null && uuid != null)
-	            this.thrower = this.worldObj.func_152378_a(uuid);
+	            this.thrower = this.worldObj.getPlayerEntityByUUID(uuid);
 		}
 		catch(IllegalArgumentException ex){
 			
@@ -936,10 +936,10 @@ public class EntityProjectile extends EntityThrowable {
     }
 
     @Override
-    public IChatComponent func_145748_c_()
+    public IChatComponent 	getFormattedCommandSenderName()
     {
     	if(getItemDisplay() != null)
     		return new ChatComponentTranslation(getItemDisplay().getDisplayName());
-    	return super.func_145748_c_();
+    	return super.	getFormattedCommandSenderName();
     }
 }

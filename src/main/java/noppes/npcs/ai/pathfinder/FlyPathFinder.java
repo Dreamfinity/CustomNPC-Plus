@@ -216,7 +216,7 @@ public class FlyPathFinder extends PathFinder
         int i = 0;
         byte b0 = 0;
 
-        if (this.getVerticalOffset(entity, currentPoint.xCoord, currentPoint.yCoord + 1, currentPoint.zCoord, p_75860_3_) == 1)
+        if (this.canEntityStandAt(entity, currentPoint.xCoord, currentPoint.yCoord + 1, currentPoint.zCoord, p_75860_3_) == 1)
         {
             b0 = 1;
         }
@@ -440,7 +440,7 @@ public class FlyPathFinder extends PathFinder
                         break;
                     }
 
-                    if (j1++ >= entity.getMaxSafePointTries())
+                    if (j1++ >= entity.getMaxFallHeight())
                     {
                         return null;
                     }
@@ -715,15 +715,15 @@ public class FlyPathFinder extends PathFinder
             {
                 return PathNodeType.DAMAGE_CACTUS;
             }
-            else if (block instanceof BlockDoor && material == Material.wood && !((BlockDoor)block).getBlocksMovement(this.worldMap, p_189553_2_, p_189553_3_, p_189553_4_))
+            else if (block instanceof BlockDoor && material == Material.wood && !((BlockDoor)block).isPassable(this.worldMap, p_189553_2_, p_189553_3_, p_189553_4_))
             {
                 return PathNodeType.DOOR_WOOD_CLOSED;
             }
-            else if (block instanceof BlockDoor && material == Material.wood && !((BlockDoor)block).getBlocksMovement(this.worldMap, p_189553_2_, p_189553_3_, p_189553_4_))
+            else if (block instanceof BlockDoor && material == Material.wood && !((BlockDoor)block).isPassable(this.worldMap, p_189553_2_, p_189553_3_, p_189553_4_))
             {
                 return PathNodeType.DOOR_IRON_CLOSED;
             }
-            else if (block instanceof BlockDoor && ((BlockDoor)block).getBlocksMovement(this.worldMap, p_189553_2_, p_189553_3_, p_189553_4_))
+            else if (block instanceof BlockDoor && ((BlockDoor)block).isPassable(this.worldMap, p_189553_2_, p_189553_3_, p_189553_4_))
             {
                 return PathNodeType.DOOR_OPEN;
             }
@@ -743,7 +743,7 @@ public class FlyPathFinder extends PathFinder
                 }
                 else
                 {
-                    return block.getBlocksMovement(worldmap, blockpos.getX(), blockpos.getY(), blockpos.getZ()) ? PathNodeType.OPEN : PathNodeType.BLOCKED;
+                    return block.isPassable(worldmap, blockpos.getX(), blockpos.getY(), blockpos.getZ()) ? PathNodeType.OPEN : PathNodeType.BLOCKED;
                 }
             }
             else

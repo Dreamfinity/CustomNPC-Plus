@@ -278,7 +278,7 @@ public class CustomOverlayLabel extends Gui implements IOverlayComponent {
                 {
                     do
                     {
-                        k = Minecraft.getMinecraft().fontRenderer.fontRandom.nextInt(this.charWidth.length);
+                        k = Minecraft.getMinecraft().fontRendererObj.fontRandom.nextInt(this.charWidth.length);
                     }
                     while (this.charWidth[j] != this.charWidth[k]);
 
@@ -340,10 +340,10 @@ public class CustomOverlayLabel extends Gui implements IOverlayComponent {
                     tessellator = Tessellator.instance;
                     GL11.glDisable(GL11.GL_TEXTURE_2D);
                     tessellator.startDrawingQuads();
-                    tessellator.addVertex((double)this.posX, (double)(this.posY + (float)(Minecraft.getMinecraft().fontRenderer.FONT_HEIGHT / 2)), 0.0D);
-                    tessellator.addVertex((double)(this.posX + f), (double)(this.posY + (float)(Minecraft.getMinecraft().fontRenderer.FONT_HEIGHT / 2)), 0.0D);
-                    tessellator.addVertex((double)(this.posX + f), (double)(this.posY + (float)(Minecraft.getMinecraft().fontRenderer.FONT_HEIGHT / 2) - 1.0F), 0.0D);
-                    tessellator.addVertex((double)this.posX, (double)(this.posY + (float)(Minecraft.getMinecraft().fontRenderer.FONT_HEIGHT / 2) - 1.0F), 0.0D);
+                    tessellator.addVertex((double)this.posX, (double)(this.posY + (float)(Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT / 2)), 0.0D);
+                    tessellator.addVertex((double)(this.posX + f), (double)(this.posY + (float)(Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT / 2)), 0.0D);
+                    tessellator.addVertex((double)(this.posX + f), (double)(this.posY + (float)(Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT / 2) - 1.0F), 0.0D);
+                    tessellator.addVertex((double)this.posX, (double)(this.posY + (float)(Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT / 2) - 1.0F), 0.0D);
                     tessellator.draw();
                     GL11.glEnable(GL11.GL_TEXTURE_2D);
                 }
@@ -354,10 +354,10 @@ public class CustomOverlayLabel extends Gui implements IOverlayComponent {
                     GL11.glDisable(GL11.GL_TEXTURE_2D);
                     tessellator.startDrawingQuads();
                     int l = this.underlineStyle ? -1 : 0;
-                    tessellator.addVertex((double)(this.posX + (float)l), (double)(this.posY + (float)Minecraft.getMinecraft().fontRenderer.FONT_HEIGHT), 0.0D);
-                    tessellator.addVertex((double)(this.posX + f), (double)(this.posY + (float)Minecraft.getMinecraft().fontRenderer.FONT_HEIGHT), 0.0D);
-                    tessellator.addVertex((double)(this.posX + f), (double)(this.posY + (float)Minecraft.getMinecraft().fontRenderer.FONT_HEIGHT - 1.0F), 0.0D);
-                    tessellator.addVertex((double)(this.posX + (float)l), (double)(this.posY + (float)Minecraft.getMinecraft().fontRenderer.FONT_HEIGHT - 1.0F), 0.0D);
+                    tessellator.addVertex((double)(this.posX + (float)l), (double)(this.posY + (float)Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT), 0.0D);
+                    tessellator.addVertex((double)(this.posX + f), (double)(this.posY + (float)Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT), 0.0D);
+                    tessellator.addVertex((double)(this.posX + f), (double)(this.posY + (float)Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT - 1.0F), 0.0D);
+                    tessellator.addVertex((double)(this.posX + (float)l), (double)(this.posY + (float)Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT - 1.0F), 0.0D);
                     tessellator.draw();
                     GL11.glEnable(GL11.GL_TEXTURE_2D);
                 }

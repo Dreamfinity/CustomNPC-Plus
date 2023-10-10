@@ -111,18 +111,18 @@ public class ScriptNbt implements INbt {
         Object[] nbts = new Object[list.tagCount()];
 
         for(int i = 0; i < list.tagCount(); ++i) {
-            if(list.func_150303_d() == 10) {
+            if(list.getTagType() == 10) {
                 nbts[i] = new ScriptNbt(list.getCompoundTagAt(i));
-            } else if(list.func_150303_d() == 8) {
+            } else if(list.getTagType() == 8) {
                 nbts[i] = list.getStringTagAt(i);
-            } else if(list.func_150303_d() == 6) {
-                nbts[i] = Double.valueOf(list.func_150309_d(i));
-            } else if(list.func_150303_d() == 5) {
-                nbts[i] = Float.valueOf(list.func_150308_e(i));
-            } else if(list.func_150303_d() == 3) {
+            } else if(list.getTagType() == 6) {
+                nbts[i] = Double.valueOf(list.getDoubleAt(i));
+            } else if(list.getTagType() == 5) {
+                nbts[i] = Float.valueOf(list.getFloatAt(i));
+            } else if(list.getTagType() == 3) {
                 nbts[i] = Integer.valueOf(list.getStringTagAt(i));
-            } else if(list.func_150303_d() == 11) {
-                nbts[i] = list.func_150306_c(i);
+            } else if(list.getTagType() == 11) {
+                nbts[i] = list.getIntArrayAt(i);
             }
         }
 
@@ -136,7 +136,7 @@ public class ScriptNbt implements INbt {
         } else if(b.getId() != 9) {
             throw new CustomNPCsException("NBT tag " + key + " isn\'t a list", new Object[0]);
         } else {
-            return ((NBTTagList)b).func_150303_d();
+            return ((NBTTagList)b).getTagType();
         }
     }
 
@@ -178,11 +178,11 @@ public class ScriptNbt implements INbt {
     }
 
     public String[] getKeys() {
-        return (String[])this.compound.func_150296_c().toArray(new String[this.compound.func_150296_c().size()]);
+        return (String[])this.compound.getKeySet().toArray(new String[this.compound.getKeySet().size()]);
     }
 
     public int getType(String key) {
-        return this.compound.func_150299_b(key);
+        return this.compound.getTagId(key);
     }
 
     public NBTTagCompound getMCNBT() {
@@ -198,7 +198,7 @@ public class ScriptNbt implements INbt {
     }
 
     public void clear() {
-        Iterator var1 = this.compound.func_150296_c().iterator();
+        Iterator var1 = this.compound.getKeySet().iterator();
 
         while(var1.hasNext()) {
             String name = (String)var1.next();

@@ -42,14 +42,14 @@ public class CmdNpc extends ChMcLogger {
             usage=""
     )
     public void home(String[] args){
-        double posX = pcParam.getPlayerCoordinates().posX;
-        double posY = pcParam.getPlayerCoordinates().posY;
-        double posZ = pcParam.getPlayerCoordinates().posZ;
+        double posX = pcParam.getCommandSenderPosition().posX;
+        double posY = pcParam.getCommandSenderPosition().posY;
+        double posZ = pcParam.getCommandSenderPosition().posZ;
         
         if(args.length == 3){
-            posX = CommandBase.func_110666_a(pcParam, selectedNpc.posX, args[0]);
-            posY = CommandBase.func_110665_a(pcParam, selectedNpc.posY, args[1].trim(), 0, 0);
-            posZ = CommandBase.func_110666_a(pcParam, selectedNpc.posZ, args[2]);
+            posX = CommandBase.clamp_coord(pcParam, selectedNpc.posX, args[0]);
+            posY = CommandBase.clamp_double(pcParam, selectedNpc.posY, args[1].trim(), 0, 0);
+            posZ = CommandBase.clamp_coord(pcParam, selectedNpc.posZ, args[2]);
         }
         
         selectedNpc.ai.startPos = new int[]{MathHelper.floor_double(posX), MathHelper.floor_double(posY), MathHelper.floor_double(posZ)};

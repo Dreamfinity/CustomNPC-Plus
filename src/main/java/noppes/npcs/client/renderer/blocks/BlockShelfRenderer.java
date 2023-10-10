@@ -37,20 +37,20 @@ public class BlockShelfRenderer extends BlockRendererInterface{
         boolean drawRight = true;
 
         if(tile.rotation == 3){
-        	drawLeft = shouldDraw(var1.getWorldObj(), var1.xCoord, var1.yCoord, var1.zCoord - 1, 3);
-        	drawRight = shouldDraw(var1.getWorldObj(), var1.xCoord, var1.yCoord, var1.zCoord + 1, 3);
+        	drawLeft = shouldDraw(var1.getWorld(), var1.xCoord, var1.yCoord, var1.zCoord - 1, 3);
+        	drawRight = shouldDraw(var1.getWorld(), var1.xCoord, var1.yCoord, var1.zCoord + 1, 3);
         }
         else if(tile.rotation == 1){
-        	drawLeft = shouldDraw(var1.getWorldObj(), var1.xCoord, var1.yCoord, var1.zCoord + 1, 1);
-        	drawRight = shouldDraw(var1.getWorldObj(), var1.xCoord, var1.yCoord, var1.zCoord - 1, 1);
+        	drawLeft = shouldDraw(var1.getWorld(), var1.xCoord, var1.yCoord, var1.zCoord + 1, 1);
+        	drawRight = shouldDraw(var1.getWorld(), var1.xCoord, var1.yCoord, var1.zCoord - 1, 1);
         }
         else if(tile.rotation == 0){
-        	drawLeft =  shouldDraw(var1.getWorldObj(), var1.xCoord + 1, var1.yCoord, var1.zCoord, 0);
-        	drawRight =  shouldDraw(var1.getWorldObj(), var1.xCoord - 1, var1.yCoord, var1.zCoord, 0);
+        	drawLeft =  shouldDraw(var1.getWorld(), var1.xCoord + 1, var1.yCoord, var1.zCoord, 0);
+        	drawRight =  shouldDraw(var1.getWorld(), var1.xCoord - 1, var1.yCoord, var1.zCoord, 0);
         }
         else if(tile.rotation == 2){
-        	drawLeft =  shouldDraw(var1.getWorldObj(), var1.xCoord - 1, var1.yCoord, var1.zCoord, 2);
-        	drawRight =  shouldDraw(var1.getWorldObj(), var1.xCoord + 1, var1.yCoord, var1.zCoord, 2);
+        	drawLeft =  shouldDraw(var1.getWorld(), var1.xCoord - 1, var1.yCoord, var1.zCoord, 2);
+        	drawRight =  shouldDraw(var1.getWorld(), var1.xCoord + 1, var1.yCoord, var1.zCoord, 2);
         }
         
         

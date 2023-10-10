@@ -86,7 +86,7 @@ public class GuiNpcFollowerHire extends GuiContainerNPCInterface
             fontRendererObj.drawString(" = "+daysS, x + 27, y + 4, CustomNpcResourceListener.DefaultTextColor);
 	        //fontRenderer.drawString(quantity, x + 0 + (12-fontRenderer.getStringWidth(quantity))/2, y + 4, 0x404040);
 
-	        if (this.func_146978_c(x - guiLeft  + 11, y - guiTop, 16, 16, mouseX, mouseY))
+	        if (this.isPointInRegion(x - guiLeft  + 11, y - guiTop, 16, 16, mouseX, mouseY))
 	        {
 	            this.renderToolTip(itemstack, mouseX, mouseY);
 	        }

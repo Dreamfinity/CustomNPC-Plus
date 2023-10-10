@@ -142,7 +142,7 @@ public class GuiCustom extends GuiScreen implements ICustomScrollListener, IGuiD
         }
 
         if (this.hoverText != null) {
-            this.func_146283_a(Arrays.asList(this.hoverText), mouseX, mouseY);
+            this.drawHoveringText(Arrays.asList(this.hoverText), mouseX, mouseY);
         }
 
         drawScreenSuper(mouseX, mouseY, partialTicks);
@@ -176,7 +176,7 @@ public class GuiCustom extends GuiScreen implements ICustomScrollListener, IGuiD
             Slot slot = (Slot)this.inventorySlots.inventorySlots.get(i1);
             this.drawSlot(slot);
 
-            if (this.isMouseOverSlot(slot, mouseX, mouseY) && slot.func_111238_b())
+            if (this.isMouseOverSlot(slot, mouseX, mouseY) && slot.canBeHovered())
             {
                 this.theSlot = slot;
                 GL11.glDisable(GL11.GL_LIGHTING);
@@ -304,11 +304,11 @@ public class GuiCustom extends GuiScreen implements ICustomScrollListener, IGuiD
                 return;
             }
 
-            if (Container.func_94527_a(p_146977_1_, itemstack1, true) && this.inventorySlots.canDragIntoSlot(p_146977_1_))
+            if (Container.canAddItemToSlot(p_146977_1_, itemstack1, true) && this.inventorySlots.canDragIntoSlot(p_146977_1_))
             {
                 itemstack = itemstack1.copy();
                 flag = true;
-                Container.func_94525_a(this.field_147008_s, this.field_146987_F, itemstack, p_146977_1_.getStack() == null ? 0 : p_146977_1_.getStack().stackSize);
+                Container.computeStackSize(this.field_147008_s, this.field_146987_F, itemstack, p_146977_1_.getStack() == null ? 0 : p_146977_1_.getStack().stackSize);
 
                 if (itemstack.stackSize > itemstack.getMaxStackSize())
                 {
@@ -379,7 +379,7 @@ public class GuiCustom extends GuiScreen implements ICustomScrollListener, IGuiD
                 Slot slot = (Slot)iterator.next();
                 itemstack1 = itemstack.copy();
                 i = slot.getStack() == null ? 0 : slot.getStack().stackSize;
-                Container.func_94525_a(this.field_147008_s, this.field_146987_F, itemstack1, i);
+                Container.computeStackSize(this.field_147008_s, this.field_146987_F, itemstack1, i);
 
                 if (itemstack1.stackSize > itemstack1.getMaxStackSize())
                 {
@@ -691,13 +691,13 @@ public class GuiCustom extends GuiScreen implements ICustomScrollListener, IGuiD
         this.mc.playerController.windowClick(this.inventorySlots.windowId, index, p_146984_3_, p_146984_4_, this.mc.thePlayer);
     }
 
-    protected void mouseMovedOrUp(int p_146286_1_, int p_146286_2_, int p_146286_3_)
+    protected void mouseReleased(int mouseX, int mouseY, int state)
     {
-        super.mouseMovedOrUp(p_146286_1_, p_146286_2_, p_146286_3_); //Forge, Call parent to release buttons
-        Slot slot = this.getSlotAtPosition(p_146286_1_, p_146286_2_);
+        super.mouseReleased(mouseX, mouseY, state); //Forge, Call parent to release buttons
+        Slot slot = this.getSlotAtPosition(mouseX, mouseY);
         int l = this.guiLeft;
         int i1 = this.guiTop;
-        boolean flag = p_146286_1_ < l || p_146286_2_ < i1 || p_146286_1_ >= l + this.xSize || p_146286_2_ >= i1 + this.ySize;
+        boolean flag = mouseX < l || mouseY < i1 || mouseX >= l + this.xSize || mouseY >= i1 + this.ySize;
         int j1 = -1;
 
         if (slot != null)
@@ -713,7 +713,7 @@ public class GuiCustom extends GuiScreen implements ICustomScrollListener, IGuiD
         Slot slot1;
         Iterator iterator;
 
-        if (this.field_146993_M && slot != null && p_146286_3_ == 0 && this.inventorySlots.func_94530_a((ItemStack)null, slot))
+        if (this.field_146993_M && slot != null && state == 0 && this.inventorySlots.func_94530_a((ItemStack)null, slot))
         {
             if (isShiftKeyDown())
             {
@@ -725,16 +725,16 @@ public class GuiCustom extends GuiScreen implements ICustomScrollListener, IGuiD
                     {
                         slot1 = (Slot)iterator.next();
 
-                        if (slot1 != null && slot1.canTakeStack(this.mc.thePlayer) && slot1.getHasStack() && slot1.inventory == slot.inventory && Container.func_94527_a(slot1, this.field_146994_N, true))
+                        if (slot1 != null && slot1.canTakeStack(this.mc.thePlayer) && slot1.getHasStack() && slot1.inventory == slot.inventory && Container.canAddItemToSlot(slot1, this.field_146994_N, true))
                         {
-                            this.handleMouseClick(slot1, slot1.slotNumber, p_146286_3_, 1);
+                            this.handleMouseClick(slot1, slot1.slotNumber, state, 1);
                         }
                     }
                 }
             }
             else
             {
-                this.handleMouseClick(slot, j1, p_146286_3_, 6);
+                this.handleMouseClick(slot, j1, state, 6);
             }
 
             this.field_146993_M = false;
@@ -742,7 +742,7 @@ public class GuiCustom extends GuiScreen implements ICustomScrollListener, IGuiD
         }
         else
         {
-            if (this.field_147007_t && this.field_146988_G != p_146286_3_)
+            if (this.field_147007_t && this.field_146988_G != state)
             {
                 this.field_147007_t = false;
                 this.field_147008_s.clear();
@@ -760,25 +760,25 @@ public class GuiCustom extends GuiScreen implements ICustomScrollListener, IGuiD
 
             if (this.clickedSlot != null && this.mc.gameSettings.touchscreen)
             {
-                if (p_146286_3_ == 0 || p_146286_3_ == 1)
+                if (state == 0 || state == 1)
                 {
                     if (this.draggedStack == null && slot != this.clickedSlot)
                     {
                         this.draggedStack = this.clickedSlot.getStack();
                     }
 
-                    flag1 = Container.func_94527_a(slot, this.draggedStack, false);
+                    flag1 = Container.canAddItemToSlot(slot, this.draggedStack, false);
 
                     if (j1 != -1 && this.draggedStack != null && flag1)
                     {
-                        this.handleMouseClick(this.clickedSlot, this.clickedSlot.slotNumber, p_146286_3_, 0);
+                        this.handleMouseClick(this.clickedSlot, this.clickedSlot.slotNumber, state, 0);
                         this.handleMouseClick(slot, j1, 0, 0);
 
                         if (this.mc.thePlayer.inventory.getItemStack() != null)
                         {
-                            this.handleMouseClick(this.clickedSlot, this.clickedSlot.slotNumber, p_146286_3_, 0);
-                            this.field_147011_y = p_146286_1_ - l;
-                            this.field_147010_z = p_146286_2_ - i1;
+                            this.handleMouseClick(this.clickedSlot, this.clickedSlot.slotNumber, state, 0);
+                            this.field_147011_y = mouseX - l;
+                            this.field_147010_z = mouseY - i1;
                             this.returningStackDestSlot = this.clickedSlot;
                             this.returningStack = this.draggedStack;
                             this.returningStackTime = Minecraft.getSystemTime();
@@ -790,8 +790,8 @@ public class GuiCustom extends GuiScreen implements ICustomScrollListener, IGuiD
                     }
                     else if (this.draggedStack != null)
                     {
-                        this.field_147011_y = p_146286_1_ - l;
-                        this.field_147010_z = p_146286_2_ - i1;
+                        this.field_147011_y = mouseX - l;
+                        this.field_147010_z = mouseY - i1;
                         this.returningStackDestSlot = this.clickedSlot;
                         this.returningStack = this.draggedStack;
                         this.returningStackTime = Minecraft.getSystemTime();
@@ -816,9 +816,9 @@ public class GuiCustom extends GuiScreen implements ICustomScrollListener, IGuiD
             }
             else if (this.mc.thePlayer.inventory.getItemStack() != null)
             {
-                if (p_146286_3_ == this.mc.gameSettings.keyBindPickBlock.getKeyCode() + 100)
+                if (state == this.mc.gameSettings.keyBindPickBlock.getKeyCode() + 100)
                 {
-                    this.handleMouseClick(slot, j1, p_146286_3_, 3);
+                    this.handleMouseClick(slot, j1, state, 3);
                 }
                 else
                 {
@@ -829,7 +829,7 @@ public class GuiCustom extends GuiScreen implements ICustomScrollListener, IGuiD
                         this.field_146994_N = slot != null && slot.getHasStack() ? slot.getStack() : null;
                     }
 
-                    this.handleMouseClick(slot, j1, p_146286_3_, flag1 ? 1 : 0);
+                    this.handleMouseClick(slot, j1, state, flag1 ? 1 : 0);
                 }
             }
         }
@@ -873,7 +873,7 @@ public class GuiCustom extends GuiScreen implements ICustomScrollListener, IGuiD
                         this.draggedStack = this.clickedSlot.getStack().copy();
                     }
                 }
-                else if (this.draggedStack.stackSize > 1 && slot != null && Container.func_94527_a(slot, this.draggedStack, false))
+                else if (this.draggedStack.stackSize > 1 && slot != null && Container.canAddItemToSlot(slot, this.draggedStack, false))
                 {
                     long i1 = Minecraft.getSystemTime();
 
@@ -896,7 +896,7 @@ public class GuiCustom extends GuiScreen implements ICustomScrollListener, IGuiD
                 }
             }
         }
-        else if (this.field_147007_t && slot != null && itemstack != null && itemstack.stackSize > this.field_147008_s.size() && Container.func_94527_a(slot, itemstack, true) && slot.isItemValid(itemstack) && this.inventorySlots.canDragIntoSlot(slot))
+        else if (this.field_147007_t && slot != null && itemstack != null && itemstack.stackSize > this.field_147008_s.size() && Container.canAddItemToSlot(slot, itemstack, true) && slot.isItemValid(itemstack) && this.inventorySlots.canDragIntoSlot(slot))
         {
             this.field_147008_s.add(slot);
             this.func_146980_g();

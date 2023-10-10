@@ -62,7 +62,7 @@ public class BlockWeaponRackRenderer extends BlockRendererInterface{
 
         if (item.getItem().requiresMultipleRenderPasses())
         {
-            for (int k = 0; k <= item.getItem().getRenderPasses(item.getItemDamage()); ++k)
+            for (int k = 0; k <= item.getItem().getRenderPasses(item.getMetadata()); ++k)
             {
                 int i = item.getItem().getColorFromItemStack(item, k);
                 float f12 = (float)(i >> 16 & 255) / 255.0F;

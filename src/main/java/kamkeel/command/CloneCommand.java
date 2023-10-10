@@ -49,9 +49,9 @@ public class CloneCommand extends CommandKamkeelBase {
             return;
         }
 
-        int x = sender.getPlayerCoordinates().posX;
-        int y = sender.getPlayerCoordinates().posY;
-        int z = sender.getPlayerCoordinates().posZ;
+        int x = sender.getCommandSenderPosition().posX;
+        int y = sender.getCommandSenderPosition().posY;
+        int z = sender.getCommandSenderPosition().posZ;
         List<EntityNPCInterface> list = getEntities(EntityNPCInterface.class, sender.getEntityWorld(), x, y, z, 80);
         for (EntityNPCInterface npc : list) {
             if (npc.display.getName().equalsIgnoreCase(args[0])) {
@@ -156,9 +156,9 @@ public class CloneCommand extends CommandKamkeelBase {
             return;
         }
         World world = sender.getEntityWorld();
-        double posX = sender.getPlayerCoordinates().posX;
-        double posY = sender.getPlayerCoordinates().posY;
-        double posZ = sender.getPlayerCoordinates().posZ;
+        double posX = sender.getCommandSenderPosition().posX;
+        double posY = sender.getCommandSenderPosition().posY;
+        double posZ = sender.getCommandSenderPosition().posZ;
 
         if(args.length > 2){
             String location = args[2];
@@ -180,9 +180,9 @@ public class CloneCommand extends CommandKamkeelBase {
                     return;
                 }
                 try{
-                    posX = CommandBase.func_110666_a(sender, posX, par[0]);
-                    posY = CommandBase.func_110665_a(sender, posY, par[1].trim(), 0, 0);
-                    posZ = CommandBase.func_110666_a(sender, posZ, par[2]);
+                    posX = CommandBase.clamp_coord(sender, posX, par[0]);
+                    posY = CommandBase.clamp_double(sender, posY, par[1].trim(), 0, 0);
+                    posZ = CommandBase.clamp_coord(sender, posZ, par[2]);
                 }  catch(NumberFormatException ex){
                     sendError(sender, "Location should be in numbers");
                     return;
@@ -249,9 +249,9 @@ public class CloneCommand extends CommandKamkeelBase {
             return;
         }
         World world = sender.getEntityWorld();
-        double posX = sender.getPlayerCoordinates().posX;
-        double posY = sender.getPlayerCoordinates().posY;
-        double posZ = sender.getPlayerCoordinates().posZ;
+        double posX = sender.getCommandSenderPosition().posX;
+        double posY = sender.getCommandSenderPosition().posY;
+        double posZ = sender.getCommandSenderPosition().posZ;
 
         if(args.length > 4){
             String location = args[4];
@@ -272,9 +272,9 @@ public class CloneCommand extends CommandKamkeelBase {
                     return;
                 }
                 try{
-                    posX = CommandBase.func_110666_a(sender, posX, par[0]);
-                    posY = CommandBase.func_110665_a(sender, posY, par[1].trim(), 0, 0);
-                    posZ = CommandBase.func_110666_a(sender, posZ, par[2]);
+                    posX = CommandBase.clamp_coord(sender, posX, par[0]);
+                    posY = CommandBase.clamp_double(sender, posY, par[1].trim(), 0, 0);
+                    posZ = CommandBase.clamp_coord(sender, posZ, par[2]);
                 }  catch(NumberFormatException ex){
                     sendError(sender, "Location should be in numbers");
                     return;

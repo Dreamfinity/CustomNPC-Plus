@@ -16,7 +16,7 @@ public class QuestAchievement extends Achievement{
 		this.message = message;
 	}
 	@Override
-    public IChatComponent func_150951_e()
+    public IChatComponent getStatName()
     {
     	return new ChatComponentText(message);
     }

@@ -544,10 +544,10 @@ public class ScriptEntity<T extends Entity> implements IEntity {
 			return null;
 		NBTBase base = compound.getTag(key);
 		if(base instanceof NBTPrimitive)
-			return ((NBTPrimitive)base).func_150286_g();
+			return ((NBTPrimitive)base).getDouble();
 		else if (base instanceof NBTTagIntArray)
-			return ((NBTTagIntArray)base).func_150302_c();
-		return ((NBTTagString)base).func_150285_a_();
+			return ((NBTTagIntArray)base).getIntArray();
+		return ((NBTTagString)base).getString();
 	}
 
 	/**
@@ -597,7 +597,7 @@ public class ScriptEntity<T extends Entity> implements IEntity {
 
 	public String[] getStoredDataKeys() {
 		NBTTagCompound compound = getStoredCompound();
-		Set strings = compound.func_150296_c();
+		Set strings = compound.getKeySet();
 		ArrayList<String> stringList = new ArrayList<>();
 		for (Object o : strings) {
 			stringList.add((String)o);

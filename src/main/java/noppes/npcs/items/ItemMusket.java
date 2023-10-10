@@ -15,7 +15,7 @@ public class ItemMusket extends ItemNpcInterface{
 
 	public ItemMusket(int par1) {
 		super(par1);
-        this.setMaxDamage(129);
+        this.setMaxDurability(129);
         setCreativeTab(CustomItems.tabWeapon);
 	}
     public void onPlayerStoppedUsing(ItemStack stack, World par2World, EntityPlayer player, int count) {

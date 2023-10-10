@@ -175,7 +175,7 @@ public class GuiBook extends GuiScreen
                 {
                     this.bookObj.setTagInfo("author", new NBTTagString(this.editingPlayer.getCommandSenderName()));
                     this.bookObj.setTagInfo("title", new NBTTagString(this.bookTitle.trim()));
-                    this.bookObj.func_150996_a(Items.written_book);
+                    this.bookObj.setItem(Items.written_book);
                 }
                 
                 NoppesUtilPlayer.sendData(EnumPlayerPacket.SaveBook, x, y, z, sign, bookObj.writeToNBT(new NBTTagCompound()));
@@ -332,7 +332,7 @@ public class GuiBook extends GuiScreen
     private void func_146457_a(String p_146457_1_){
         if (this.bookPages != null && this.currPage >= 0 && this.currPage < this.bookPages.tagCount())
         {
-            this.bookPages.func_150304_a(this.currPage, new NBTTagString(p_146457_1_));
+            this.bookPages.setTag(this.currPage, new NBTTagString(p_146457_1_));
             this.field_146481_r = true;
         }
     }

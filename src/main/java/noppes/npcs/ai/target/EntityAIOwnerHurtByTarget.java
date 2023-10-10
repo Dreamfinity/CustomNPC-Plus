@@ -32,7 +32,7 @@ public class EntityAIOwnerHurtByTarget extends EntityAITarget
             }
             else{
                 this.theOwnerAttacker = entitylivingbase.getAITarget();
-                int i = entitylivingbase.func_142015_aE();
+                int i = entitylivingbase.getRevengeTimer();
                 return i != this.field_142051_e && this.isSuitableTarget(this.theOwnerAttacker, false);
             }
         }
@@ -46,7 +46,7 @@ public class EntityAIOwnerHurtByTarget extends EntityAITarget
         EntityLivingBase entitylivingbase = this.npc.getOwner();
 
         if (entitylivingbase != null){
-            this.field_142051_e = entitylivingbase.func_142015_aE();
+            this.field_142051_e = entitylivingbase.getRevengeTimer();
         }
 
         super.startExecuting();

@@ -114,8 +114,8 @@ public class RenderProjectile extends Render
                  }
 
                  float f5 = 1.0F;
-                 this.itemRenderBlocks.renderBlockAsItem(block, item.getItemDamage(), 1.0F);
-                 //this.renderBlocks.renderBlockAsItem(block, item.getItemDamage(), f5);
+                 this.itemRenderBlocks.renderBlockAsItem(block, item.getMetadata(), 1.0F);
+                 //this.renderBlocks.renderBlockAsItem(block, item.getMetadata(), f5);
              }
              else //render a 3D item
              {
@@ -125,7 +125,7 @@ public class RenderProjectile extends Render
                  if (item.getItem().requiresMultipleRenderPasses())
                  {
 
-                     for (int k = 0; k < item.getItem().getRenderPasses(item.getItemDamage()); ++k)
+                     for (int k = 0; k < item.getItem().getRenderPasses(item.getMetadata()); ++k)
                      {
                          IIcon icon = item.getItem().getIcon(item, k);
                          f8 = 1.0F;
@@ -169,12 +169,12 @@ public class RenderProjectile extends Render
         else //If the render is a sprite
         {
 //	        IIcon icon = item.getIconIndex();
-	        IIcon icon = item.getItem().getIconFromDamage(item.getItemDamage());
+	        IIcon icon = item.getItem().getIconFromDamage(item.getMetadata());
 	        
 	        this.bindTexture(TextureMap.locationItemsTexture);
             if (item.getItem().requiresMultipleRenderPasses())
             {
-                for (int k = 0; k < item.getItem().getRenderPasses(item.getItemDamage()); ++k)
+                for (int k = 0; k < item.getItem().getRenderPasses(item.getMetadata()); ++k)
                 {
                     int i = item.getItem().getColorFromItemStack(item, k);
                     float f5 = (float)(i >> 16 & 255) / 255.0F;
@@ -185,7 +185,7 @@ public class RenderProjectile extends Render
             }
 	        if (icon == ItemPotion.func_94589_d("bottle_splash") || icon == ItemPotion.func_94589_d("bottle_drinkable"))
             {
-	        	int var12 = PotionHelper.func_77915_a(item.getItemDamage(), false);
+	        	int var12 = PotionHelper.func_77915_a(item.getMetadata(), false);
                 float var13 = (float)(var12 >> 16 & 255) / 255.0F;
                 float var14 = (float)(var12 >> 8 & 255) / 255.0F;
                 float var15 = (float)(var12 & 255) / 255.0F;

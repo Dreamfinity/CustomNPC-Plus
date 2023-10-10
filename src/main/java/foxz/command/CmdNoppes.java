@@ -117,9 +117,9 @@ public class CmdNoppes extends ChMcLogger {
 			cmdnpc.processCommand(this.pcParam, new String[]{args[0], npcname});
 			return true;
 		}
-		int x = pcParam.getPlayerCoordinates().posX;
-		int y = pcParam.getPlayerCoordinates().posY;
-		int z = pcParam.getPlayerCoordinates().posZ;
+		int x = pcParam.getCommandSenderPosition().posX;
+		int y = pcParam.getCommandSenderPosition().posY;
+		int z = pcParam.getCommandSenderPosition().posZ;
 		List<EntityNPCInterface> list = getNearbeEntityFromPlayer(EntityNPCInterface.class, pcParam.getEntityWorld(), x, y, z, 80);
 		EntityNPCInterface closest = null;
 		for (EntityNPCInterface npc : list) {

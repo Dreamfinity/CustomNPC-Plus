@@ -104,7 +104,7 @@ public class RenderCNPCHand extends ItemRenderer {
             flag = true;
         }
 
-        if (itemstack != null && this.itemToRender != null && itemstack != this.itemToRender && itemstack.getItem() == this.itemToRender.getItem() && itemstack.getItemDamage() == this.itemToRender.getItemDamage())
+        if (itemstack != null && this.itemToRender != null && itemstack != this.itemToRender && itemstack.getItem() == this.itemToRender.getItem() && itemstack.getMetadata() == this.itemToRender.getMetadata())
         {
             this.itemToRender = itemstack;
             flag = true;

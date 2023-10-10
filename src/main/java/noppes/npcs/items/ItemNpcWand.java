@@ -39,7 +39,7 @@ public class ItemNpcWand extends Item{
     {
 		if(par3World.isRemote)
 			return true;
-		if(ConfigMain.OpsOnly && !MinecraftServer.getServer().getConfigurationManager().func_152596_g(player.getGameProfile())){
+		if(ConfigMain.OpsOnly && !MinecraftServer.getServer().getConfigurationManager().canSendCommands(player.getGameProfile())){
 			player.addChatMessage(new ChatComponentTranslation("availability.permission"));
 		}
 		else if(CustomNpcsPermissions.hasPermission(player, CustomNpcsPermissions.NPC_CREATE)){

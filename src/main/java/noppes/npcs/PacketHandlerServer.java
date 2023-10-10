@@ -795,7 +795,7 @@ public class PacketHandlerServer{
 		else if(type == EnumPacketServer.JobSave){
 			NBTTagCompound original = npc.jobInterface.writeToNBT(new NBTTagCompound());
 			NBTTagCompound compound = Server.readNBT(buffer);
-			Set<String> names = compound.func_150296_c();
+			Set<String> names = compound.getKeySet();
 			for(String name : names)
 				original.setTag(name, compound.getTag(name));
 			npc.jobInterface.readFromNBT(original);

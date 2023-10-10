@@ -80,9 +80,9 @@ public class ModelNPCGolem extends ModelNPCMale {
         bipedLeftLeg.rotateAngleY = 0.0F;
         bipedRightLeg.rotateAngleY = 0.0F;
         
-        float f6 = MathHelper.sin(this.onGround * (float)Math.PI);
-        float f7 = MathHelper.sin((16.0F - (1.0F - this.onGround) * (1.0F - this.onGround)) * (float)Math.PI);
-        if (this.onGround > 0.0)
+        float f6 = MathHelper.sin(this.swingProgress * (float)Math.PI);
+        float f7 = MathHelper.sin((16.0F - (1.0F - this.swingProgress) * (1.0F - this.swingProgress)) * (float)Math.PI);
+        if (this.swingProgress > 0.0)
         {
 	        this.bipedRightArm.rotateAngleZ = 0.0F;
 	        this.bipedLeftArm.rotateAngleZ = 0.0F;

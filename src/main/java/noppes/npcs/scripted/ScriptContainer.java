@@ -95,6 +95,6 @@ public class ScriptContainer implements IContainer {
     }
 
     public boolean isPlayerNotUsingContainer(IPlayer player){
-        return container.isPlayerNotUsingContainer((EntityPlayerMP) player.getMCEntity());
+        return container.getCanCraft((EntityPlayerMP) player.getMCEntity());
     }
 }

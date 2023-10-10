@@ -23,12 +23,12 @@ public class ScriptClientSound extends MovingSound implements ITickableSound {
         clientSound.yPosF = sound.yPosF;
         clientSound.zPosF = sound.zPosF;
         clientSound.volume = sound.volume;
-        clientSound.field_147663_c = sound.pitch;
+        clientSound.pitch = sound.pitch;
         clientSound.repeat = sound.repeat;
-        clientSound.field_147665_h = sound.repeatDelay;
+        clientSound.repeatDelay = sound.repeatDelay;
         if (compound.hasKey("EntityID")) {
             clientSound.entity = world.getEntityByID(compound.getInteger("EntityID"));
-            clientSound.field_147666_i = AttenuationType.NONE;
+            clientSound.attenuationType = AttenuationType.NONE;
         }
         return clientSound;
     }

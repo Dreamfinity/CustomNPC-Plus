@@ -10,7 +10,7 @@ public class ScriptTileEntity<T extends TileEntity> implements ITileEntity {
 
     public ScriptTileEntity(T tileEntity) {
         this.tileEntity = tileEntity;
-        this.world = NpcAPI.Instance().getIWorld(tileEntity.getWorldObj());
+        this.world = NpcAPI.Instance().getIWorld(tileEntity.getWorld());
     }
 
     public int getBlockMetadata(){
@@ -40,7 +40,7 @@ public class ScriptTileEntity<T extends TileEntity> implements ITileEntity {
     }
 
     public double getDistanceFrom(double x, double y, double z){
-        return this.tileEntity.getDistanceFrom(x,y,z);
+        return this.tileEntity.getDistanceSq(x,y,z);
     }
 
     public double getDistanceFrom(IPos pos){

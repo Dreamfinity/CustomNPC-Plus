@@ -103,15 +103,15 @@ public class ScriptItemStack implements IItemStack {
 	/**
 	 * @return Returns the item damage of this item. For tools this is the durability for other items the color and more.
 	 */
-	public int getItemDamage(){
-		return item.getItemDamage();
+	public int getMetadata(){
+		return item.getMetadata();
 	}
 	
 	/**
 	 * @param value The value to be set as item damage. For tools this is the durability for other items the color and more.
 	 */
-	public void setItemDamage(int value){
-		item.setItemDamage(value);
+	public void setMetadata(int value){
+		item.setMetadata(value);
 	}
 	
 	/**
@@ -148,9 +148,9 @@ public class ScriptItemStack implements IItemStack {
 		if(tag == null)
 			return null;
 		if(tag instanceof NBTPrimitive)
-			return ((NBTPrimitive)tag).func_150286_g();
+			return ((NBTPrimitive)tag).getDouble();
 		if(tag instanceof NBTTagString)
-			return ((NBTTagString)tag).func_150285_a_();
+			return ((NBTTagString)tag).getString();
 		return tag;
 	}
 
@@ -245,7 +245,7 @@ public class ScriptItemStack implements IItemStack {
 	public String[] getLore() {
 		if (this.item.getTagCompound() != null) {
 			NBTTagCompound compound = this.item.getTagCompound().getCompoundTag("display");
-			if(compound != null && compound.func_150299_b("Lore") == 9) {
+			if(compound != null && compound.getTagId("Lore") == 9) {
 				NBTTagList nbttaglist = compound.getTagList("Lore", 8);
 				if (nbttaglist.tagCount() > 0) {
 					List<String> lore = new ArrayList();
@@ -264,7 +264,7 @@ public class ScriptItemStack implements IItemStack {
 	public boolean hasLore() {
 		if (this.item.getTagCompound() != null) {
 			NBTTagCompound compound = this.item.getTagCompound().getCompoundTag("display");
-			if (compound != null && compound.func_150299_b("Lore") == 9) {
+			if (compound != null && compound.getTagId("Lore") == 9) {
 				NBTTagList nbttaglist = compound.getTagList("Lore", 8);
 				return nbttaglist.tagCount() > 0;
 			}
@@ -371,7 +371,7 @@ public class ScriptItemStack implements IItemStack {
 	}
 	
 	public int getFoodPoints() {
-		if (isFood()) return ((ItemFood)item.getItem()).func_150905_g(item);
+		if (isFood()) return ((ItemFood)item.getItem()).getHealAmount(item);
 		return -1;
 	}
 

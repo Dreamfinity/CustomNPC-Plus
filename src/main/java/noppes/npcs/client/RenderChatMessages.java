@@ -48,7 +48,7 @@ public class RenderChatMessages implements IChatMessages{
 		Map<Long,TextBlockClient> messages = getMessages();
 		if(messages.isEmpty())
 			return;
-		FontRenderer font = Minecraft.getMinecraft().fontRenderer;
+		FontRenderer font = Minecraft.getMinecraft().fontRendererObj;
         float var13 = 1.6F;
         float var14 = 0.016666668F * var13;
         GL11.glPushMatrix();

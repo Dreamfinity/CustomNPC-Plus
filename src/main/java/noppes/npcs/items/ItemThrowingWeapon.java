@@ -23,7 +23,7 @@ public class ItemThrowingWeapon extends ItemNpcInterface{
     		player.swingItem();
     		return;
     	}
-    	EntityProjectile projectile = new EntityProjectile(worldObj, player, new ItemStack(par1ItemStack.getItem(), 1,par1ItemStack.getItemDamage()), false);
+    	EntityProjectile projectile = new EntityProjectile(worldObj, player, new ItemStack(par1ItemStack.getItem(), 1,par1ItemStack.getMetadata()), false);
     	projectile.damage = damage;
     	projectile.canBePickedUp = !player.capabilities.isCreativeMode && dropItem;
     	projectile.setRotating(rotating);;

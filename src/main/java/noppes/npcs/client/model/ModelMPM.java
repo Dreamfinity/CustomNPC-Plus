@@ -361,7 +361,7 @@ public class ModelMPM extends ModelNPCMale{
 			}
 			if(!isArmor){
 				entityModel.isChild = entity.isChild();
-				entityModel.onGround = onGround;
+				entityModel.swingProgress = swingProgress;
 				entityModel.isRiding = isRiding;
 				if(entityModel instanceof ModelBiped){
 					ModelBiped biped = (ModelBiped) entityModel;

@@ -559,13 +559,13 @@ public class ClientProxy extends CommonProxy {
 		public int height(){
 			if(useCustomFont)
 				return textFont.fontHeight;
-			return Minecraft.getMinecraft().fontRenderer.FONT_HEIGHT;
+			return Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT;
 		}
 
 		public int width(String text){
 			if(useCustomFont)
 				return textFont.getStringWidth(text);
-			return Minecraft.getMinecraft().fontRenderer.getStringWidth(text);
+			return Minecraft.getMinecraft().fontRendererObj.getStringWidth(text);
 		}
 
 		public FontContainer copy() {
@@ -581,7 +581,7 @@ public class ClientProxy extends CommonProxy {
 				textFont.renderString(text, x, y, color, false);
 			}
 			else{
-				Minecraft.getMinecraft().fontRenderer.drawStringWithShadow(text, x, y, color);
+				Minecraft.getMinecraft().fontRendererObj.drawStringWithShadow(text, x, y, color);
 			}
 		}
 

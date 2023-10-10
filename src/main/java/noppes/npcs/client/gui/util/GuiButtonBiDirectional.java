@@ -41,11 +41,11 @@ public class GuiButtonBiDirectional extends GuiNpcButton{
         }
         String text = "";
         float maxWidth = this.width - 36;
-        if(mc.fontRenderer.getStringWidth(displayString) > maxWidth){
+        if(mc.fontRendererObj.getStringWidth(displayString) > maxWidth){
         	for(int h = 0; h < displayString.length(); h++){
         		char c = displayString.charAt(h);
         		text += c;
-        		if(mc.fontRenderer.getStringWidth(text) > maxWidth)
+        		if(mc.fontRendererObj.getStringWidth(text) > maxWidth)
         			break;
         	}
         	text += "...";
@@ -55,7 +55,7 @@ public class GuiButtonBiDirectional extends GuiNpcButton{
         if(hover)
         	text = (char)167 + "n" + text;
         
-        this.drawCenteredString(mc.fontRenderer, text, this.xPosition + this.width / 2, this.yPosition + (this.height - 8) / 2, l);
+        this.drawCenteredString(mc.fontRendererObj, text, this.xPosition + this.width / 2, this.yPosition + (this.height - 8) / 2, l);
     }
     
     @Override

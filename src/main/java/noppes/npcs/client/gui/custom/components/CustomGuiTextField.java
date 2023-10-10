@@ -25,7 +25,7 @@ public class CustomGuiTextField extends GuiTextField implements IKeyListener, ID
     float alpha;
 
     public CustomGuiTextField(int id, int x, int y, int width, int height) {
-        super(Minecraft.getMinecraft().fontRenderer, GuiCustom.guiLeft + x, GuiCustom.guiTop + y, width, height);
+        super(Minecraft.getMinecraft().fontRendererObj, GuiCustom.guiLeft + x, GuiCustom.guiTop + y, width, height);
         this.id = id;
         this.setMaxStringLength(500);
     }

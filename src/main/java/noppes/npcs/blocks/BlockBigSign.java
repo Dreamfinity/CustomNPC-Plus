@@ -60,7 +60,7 @@ public class BlockBigSign extends BlockContainer{
         TileBigSign tile = (TileBigSign) par1World.getTileEntity(par2, par3, par4);
     	tile.rotation = l;
     	
-        par1World.setBlockMetadataWithNotify(par2, par3, par4, par6ItemStack.getItemDamage() , 2);
+        par1World.setBlockMetadataWithNotify(par2, par3, par4, par6ItemStack.getMetadata() , 2);
 
     	if(par5EntityLivingBase instanceof EntityPlayer && par1World.isRemote){
     		CustomNpcs.proxy.openGui(par2, par3, par4, EnumGuiType.BigSign, (EntityPlayer) par5EntityLivingBase);
@@ -107,7 +107,7 @@ public class BlockBigSign extends BlockContainer{
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void registerBlockIcons(IIconRegister par1IconRegister)
+    public void registerIcons(IIconRegister par1IconRegister)
     {
     	
     }

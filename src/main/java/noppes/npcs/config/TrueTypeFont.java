@@ -103,7 +103,7 @@ public class TrueTypeFont {
                         TrueTypeFont.Glyph g1 = new TrueTypeFont.Glyph();
                         if(index < 16) {
                             g1.type = TrueTypeFont.GlyphType.COLOR;
-                            //g1.color = Minecraft.getMinecraft().fontRenderer.func_175064_b(g);
+                            //g1.color = Minecraft.getMinecraft().fontRendererObj.func_175064_b(g);
                             g1.color = 0;
                         } else if(index == 16) {
                             g1.type = TrueTypeFont.GlyphType.RANDOM;

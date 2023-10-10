@@ -57,7 +57,7 @@ public class BlockCarpentryBench extends BlockContainer
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void registerBlockIcons(IIconRegister par1IconRegister)
+    public void registerIcons(IIconRegister par1IconRegister)
     {
     	
     }
@@ -77,7 +77,7 @@ public class BlockCarpentryBench extends BlockContainer
     public void onBlockPlacedBy(World par1World, int par2, int par3, int par4, EntityLivingBase par5EntityLiving, ItemStack item)
     {
         int var6 = MathHelper.floor_double((double)(par5EntityLiving.rotationYaw / 90.0F) + 0.5D) & 3;
-        par1World.setBlockMetadataWithNotify(par2, par3, par4, var6 + item.getItemDamage() * 4, 2);
+        par1World.setBlockMetadataWithNotify(par2, par3, par4, var6 + item.getMetadata() * 4, 2);
     }
 
 	@Override

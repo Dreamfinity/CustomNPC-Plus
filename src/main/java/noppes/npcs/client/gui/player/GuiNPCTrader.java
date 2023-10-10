@@ -103,7 +103,7 @@ public class GuiNPCTrader extends GuiContainerNPCInterface{
 			if(item == null || sold == null)
 				continue;
 
-			if(this.func_146978_c(x + 43, y + 1, 16, 16, par1, par2)){
+			if(this.isPointInRegion(x + 43, y + 1, 16, 16, par1, par2)){
 				if(!container.canBuy(slot, player)){
 		        	GL11.glTranslatef(0, 0, 300);
 					if(item != null && !NoppesUtilPlayer.compareItems(player, item, role.ignoreDamage, role.ignoreNBT))
@@ -125,10 +125,10 @@ public class GuiNPCTrader extends GuiContainerNPCInterface{
 				}
 			}
 
-            if (this.func_146978_c(x, y, 16, 16, par1, par2) && item2 != null){
+            if (this.isPointInRegion(x, y, 16, 16, par1, par2) && item2 != null){
                 this.renderToolTip(item2, par1 - guiLeft, par2 - guiTop);
             }
-            if (this.func_146978_c(x + 18, y, 16, 16, par1, par2)){
+            if (this.isPointInRegion(x + 18, y, 16, 16, par1, par2)){
                 this.renderToolTip(item, par1 - guiLeft, par2 - guiTop);
             }
     	}

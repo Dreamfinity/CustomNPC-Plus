@@ -16,19 +16,19 @@ public class ScriptEntityItem<T extends EntityItem> extends ScriptEntity<T> impl
     }
 
     public String getOwner() {
-        return this.entity.func_145798_i();
+        return this.entity.getOwner();
     }
 
     public void setOwner(String name) {
-        this.entity.func_145797_a(name);
+        this.entity.setOwner(name);
     }
 
     public String getThrower() {
-        return this.entity.func_145800_j();
+        return this.entity.getThrower();
     }
 
     public void setThrower(String name) {
-        this.entity.func_145799_b(name);
+        this.entity.setThrower(name);
     }
 
     public int getPickupDelay() {

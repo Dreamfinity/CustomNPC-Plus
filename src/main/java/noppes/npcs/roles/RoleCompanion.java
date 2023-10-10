@@ -158,7 +158,7 @@ public class RoleCompanion extends RoleInterface {
                 String s = "iconcrack_" + Item.getIdFromItem(eating.getItem());
 
                 if (eating.getHasSubtypes()){
-                    s = s + "_" + eating.getItemDamage();
+                    s = s + "_" + eating.getMetadata();
                 }
 
                 npc.worldObj.spawnParticle(s, vec31.xCoord, vec31.yCoord, vec31.zCoord, vec3.xCoord, vec3.yCoord + 0.0D, vec3.zCoord);
@@ -636,12 +636,12 @@ public class RoleCompanion extends RoleInterface {
     			ite.remove();
     			continue;
     		}
-    		int amount = ((ItemFood) is.getItem()).func_150905_g(is);
+    		int amount = ((ItemFood) is.getItem()).getHealAmount(is);
     		if(i == -1 || amount < i)
     			i = amount;
     	}
     	for(ItemStack is : food){
-    		if(((ItemFood)is.getItem()).func_150905_g(is) == i)
+    		if(((ItemFood)is.getItem()).getHealAmount(is) == i)
     			return is;
     	}
 		return null;

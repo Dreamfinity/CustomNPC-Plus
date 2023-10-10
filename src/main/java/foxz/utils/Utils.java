@@ -18,7 +18,7 @@ public class Utils {
     }
     
     static public EntityPlayer getOnlinePlayer(String playername){
-        return MinecraftServer.getServer().getConfigurationManager().func_152612_a(playername);
+        return MinecraftServer.getServer().getConfigurationManager().getPlayerByUsername(playername);
     }
     
     static public World getWorld(String t){

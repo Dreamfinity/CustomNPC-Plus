@@ -344,7 +344,7 @@ public class GuiDialogInteract extends GuiNPCInterface implements IGuiClose
 
 							gradualText += addText;
 							if (textSoundTime % 5 == 0) {
-								Minecraft.getMinecraft().getSoundHandler().playSound(PositionedSoundRecord.func_147674_a(new ResourceLocation(dialog.textSound), dialog.textPitch));
+								Minecraft.getMinecraft().getSoundHandler().playSound(PositionedSoundRecord.createPositionedSoundRecord(new ResourceLocation(dialog.textSound), dialog.textPitch));
 							}
 							textSoundTime++;
 						}

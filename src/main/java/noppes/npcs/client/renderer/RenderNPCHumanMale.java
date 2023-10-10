@@ -70,7 +70,7 @@ public class RenderNPCHumanMale extends RenderNPCInterface
                 modelbiped.bipedLeftLeg.showModel = par2 == 2 || par2 == 3;
                 modelbiped = ForgeHooksClient.getArmorModel(par1EntityLiving, itemstack, par2, modelbiped);
                 this.setRenderPassModel(modelbiped);
-                modelbiped.onGround = this.mainModel.onGround;
+                modelbiped.swingProgress = this.mainModel.swingProgress;
                 modelbiped.isRiding = this.mainModel.isRiding;
                 modelbiped.isChild = this.mainModel.isChild;
                 float f1 = 1.0F;
@@ -297,7 +297,7 @@ public class RenderNPCHumanMale extends RenderNPCInterface
 
             if (itemstack2.getItem().requiresMultipleRenderPasses())
             {
-                for (int var25 = 0; var25 < itemstack2.getItem().getRenderPasses(itemstack2.getItemDamage()); ++var25)
+                for (int var25 = 0; var25 < itemstack2.getItem().getRenderPasses(itemstack2.getMetadata()); ++var25)
                 {
                     int var24 = itemstack2.getItem().getColorFromItemStack(itemstack2, var25);
                     float var26 = (float)(var24 >> 16 & 255) / 255.0F;
@@ -397,7 +397,7 @@ public class RenderNPCHumanMale extends RenderNPCInterface
 
             if (itemstack2.getItem().requiresMultipleRenderPasses())
             {
-                for (int var25 = 0; var25 < itemstack2.getItem().getRenderPasses(itemstack2.getItemDamage()); ++var25)
+                for (int var25 = 0; var25 < itemstack2.getItem().getRenderPasses(itemstack2.getMetadata()); ++var25)
                 {
                     int var24 = itemstack2.getItem().getColorFromItemStack(itemstack2, var25);
                     float var26 = (float)(var24 >> 16 & 255) / 255.0F;

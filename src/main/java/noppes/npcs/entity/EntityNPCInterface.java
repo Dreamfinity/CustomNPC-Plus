@@ -888,7 +888,7 @@ public abstract class EntityNPCInterface extends EntityCreature implements IEnti
 	 * Plays step sound at given x, y, z for the entity
 	 */
 	@Override
-	protected void func_145780_a(int p_145780_1_, int p_145780_2_, int p_145780_3_, Block p_145780_4_)
+	protected void playStepSound(int p_145780_1_, int p_145780_2_, int p_145780_3_, Block p_145780_4_)
 	{
 		if (!this.advanced.stepSound.equals(""))
 		{
@@ -896,7 +896,7 @@ public abstract class EntityNPCInterface extends EntityCreature implements IEnti
 		}
 		else
 		{
-			super.func_145780_a(p_145780_1_, p_145780_2_, p_145780_3_, p_145780_4_);
+			super.playStepSound(p_145780_1_, p_145780_2_, p_145780_3_, p_145780_4_);
 		}
 	}
 
@@ -1101,7 +1101,7 @@ public abstract class EntityNPCInterface extends EntityCreature implements IEnti
 		AxisAlignedBB axisalignedbb = null;
 
 		if (this.ridingEntity != null && this.ridingEntity.isEntityAlive()){
-			axisalignedbb = this.boundingBox.func_111270_a(this.ridingEntity.boundingBox).expand(1.0D, 0.0D, 1.0D);
+			axisalignedbb = this.boundingBox.union(this.ridingEntity.boundingBox).expand(1.0D, 0.0D, 1.0D);
 		}
 		else{
 			axisalignedbb = this.boundingBox.expand(1.0D, 0.5D, 1.0D);
@@ -1206,7 +1206,7 @@ public abstract class EntityNPCInterface extends EntityCreature implements IEnti
 	}
 	private static final ItemStack[] lastActive = new ItemStack[5];
 	@Override
-	public ItemStack[] getLastActiveItems(){
+	public ItemStack[] getInventory(){
 		return lastActive;
 	}
 
@@ -1610,7 +1610,7 @@ public abstract class EntityNPCInterface extends EntityCreature implements IEnti
 	}
 
 	@Override
-	public ChunkCoordinates getPlayerCoordinates() {
+	public ChunkCoordinates getCommandSenderPosition() {
 		return new ChunkCoordinates(MathHelper.floor_double(posX), MathHelper.floor_double(posY), MathHelper.floor_double(posZ));
 	}
 

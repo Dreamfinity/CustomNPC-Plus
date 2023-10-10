@@ -632,11 +632,11 @@ public class ScriptPlayer<T extends EntityPlayerMP> extends ScriptLivingBase<T> 
 	 * @return Returns whether or not the player has this achievement
 	 */
 	public boolean hasAchievement(String achievement){
-        StatBase statbase = StatList.func_151177_a(achievement);
+        StatBase statbase = StatList.getOneShotStat(achievement);
         if(statbase == null || !(statbase instanceof Achievement)){
         	return false;
         }
-		return player.func_147099_x().hasAchievementUnlocked((Achievement) statbase);
+		return player.getStatFile().hasAchievementUnlocked((Achievement) statbase);
 	}
 	
 	/**
@@ -693,7 +693,7 @@ public class ScriptPlayer<T extends EntityPlayerMP> extends ScriptLivingBase<T> 
 	}
 
 	public ScriptDBCPlayer<T> getDBCPlayer() {
-		Set keySet = player.getEntityData().getCompoundTag("PlayerPersisted").func_150296_c();
+		Set keySet = player.getEntityData().getCompoundTag("PlayerPersisted").getKeySet();
 		Iterator iterator = keySet.iterator();
 
 		while (iterator.hasNext())

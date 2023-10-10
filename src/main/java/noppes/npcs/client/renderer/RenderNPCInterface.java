@@ -50,7 +50,7 @@ public class RenderNPCInterface extends RenderLiving{
 	}
 
 	protected void renderName(EntityNPCInterface npc, double d, double d1, double d2) {
-		if (!this.func_110813_b(npc))
+		if (!this.canRenderName(npc))
 			return;
 		float f2 = npc.getDistanceToEntity(renderManager.livingPlayer);
 		float f3 = npc.isSneaking() ? 32F : 64F;
@@ -329,9 +329,9 @@ public class RenderNPCInterface extends RenderLiving{
 				return AbstractClientPlayer.locationStevePng;
 			} else if(npc.display.skinType == 1 && npc.display.playerProfile != null) {
 				Minecraft minecraft = Minecraft.getMinecraft();
-				Map map = minecraft.func_152342_ad().func_152788_a(npc.display.playerProfile);
+				Map map = minecraft.getSkinManager().loadSkinFromCache(npc.display.playerProfile);
 				if (map.containsKey(Type.SKIN)){
-					npc.textureLocation = minecraft.func_152342_ad().func_152792_a((MinecraftProfileTexture)map.get(Type.SKIN), Type.SKIN);
+					npc.textureLocation = minecraft.getSkinManager().loadSkin((MinecraftProfileTexture)map.get(Type.SKIN), Type.SKIN);
 				}
 				LastTextureTick = 0;
 			} else if (npc.display.skinType == 2 || npc.display.skinType == 3) {
@@ -377,7 +377,7 @@ public class RenderNPCInterface extends RenderLiving{
 				bufferedimage = bufferedimage.getSubimage(0, 0, totalWidth, 32);
 			}
 
-			ImageDownloadAlt object = new ImageDownloadAlt(null, npc.display.texture, SkinManager.field_152793_a, new ImageBufferDownloadAlt(false));
+			ImageDownloadAlt object = new ImageDownloadAlt(null, npc.display.texture, SkinManager.DEFAULT_SKIN, new ImageBufferDownloadAlt(false));
 			object.setBufferedImage(bufferedimage);
 
 			try {

@@ -61,7 +61,7 @@ public abstract class TileNpcContainer extends TileColorable implements IInvento
 
         compound.setTag("Items", nbttaglist);
 
-        if (this.hasCustomInventoryName())
+        if (this.isCustomInventoryName())
         {
             compound.setString("CustomName", this.customName);
         }
@@ -150,13 +150,13 @@ public abstract class TileNpcContainer extends TileColorable implements IInvento
 
 	@Override
 	public String getInventoryName() {
-		return hasCustomInventoryName()?customName:getName();
+		return isCustomInventoryName()?customName:getName();
 	}
 	
 	public abstract String getName();
 
 	@Override
-	public boolean hasCustomInventoryName() {
+	public boolean isCustomInventoryName() {
 		return !customName.isEmpty();
 	}
 
@@ -171,12 +171,12 @@ public abstract class TileNpcContainer extends TileColorable implements IInvento
 	}
 
 	@Override
-	public void openInventory() {
+	public void openChest() {
 		playerUsing++;
 	}
 
 	@Override
-	public void closeInventory() {
+	public void closeChest() {
 		playerUsing--;
 	}
 
@@ -203,7 +203,7 @@ public abstract class TileNpcContainer extends TileColorable implements IInvento
                 }
 
                 itemstack.stackSize -= j1;
-                entityitem = new EntityItem(world, (double)((float)x + f), (double)((float)y + f1), (double)((float)z + f2), new ItemStack(itemstack.getItem(), j1, itemstack.getItemDamage()));
+                entityitem = new EntityItem(world, (double)((float)x + f), (double)((float)y + f1), (double)((float)z + f2), new ItemStack(itemstack.getItem(), j1, itemstack.getMetadata()));
                 float f3 = 0.05F;
                 entityitem.motionX = (double)((float)world.rand.nextGaussian() * f3);
                 entityitem.motionY = (double)((float)world.rand.nextGaussian() * f3 + 0.2F);

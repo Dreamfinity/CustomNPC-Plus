@@ -25,7 +25,7 @@ public class BlockPlaceholder extends Block{
     @Override   
     public void onBlockPlacedBy(World par1World, int par2, int par3, int par4, EntityLivingBase par5EntityLivingBase, ItemStack par6ItemStack){
     	super.onBlockPlacedBy(par1World, par2, par3, par4, par5EntityLivingBase, par6ItemStack);
-        par1World.setBlockMetadataWithNotify(par2, par3, par4, par6ItemStack.getItemDamage() , 2);
+        par1World.setBlockMetadataWithNotify(par2, par3, par4, par6ItemStack.getMetadata() , 2);
     }
     
     @Override   
@@ -41,7 +41,7 @@ public class BlockPlaceholder extends Block{
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void registerBlockIcons(IIconRegister par1IconRegister){
+    public void registerIcons(IIconRegister par1IconRegister){
     	for(int i = 0; i < 16; i++){
     		icons[i] = par1IconRegister.registerIcon("customnpcs:placeholder_" + i);
     	}

@@ -345,7 +345,7 @@ public class DataInventory implements IInventory{
 		return "NPC Inventory";
 	}
 	@Override
-	public boolean hasCustomInventoryName() {
+	public boolean isCustomInventoryName() {
 		return true;
 	}
 	@Override
@@ -354,12 +354,12 @@ public class DataInventory implements IInventory{
 		
 	}
 	@Override
-	public void openInventory() {
+	public void openChest() {
 		// TODO Auto-generated method stub
 		
 	}
 	@Override
-	public void closeInventory() {
+	public void closeChest() {
 		// TODO Auto-generated method stub
 		
 	}

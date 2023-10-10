@@ -104,7 +104,7 @@ public class GuiRecipes extends GuiNPCInterface
     	mc.renderEngine.bindTexture(resource);
 		
 		label.label = page + 1 + "/" + MathHelper.ceiling_float_int(recipes.size() / 4f);
-		label.x = guiLeft + (256 - Minecraft.getMinecraft().fontRenderer.getStringWidth(label.label)) / 2;
+		label.x = guiLeft + (256 - Minecraft.getMinecraft().fontRendererObj.getStringWidth(label.label)) / 2;
 		for(int i = 0; i < 4; i++){
 			int index = i + page * 4;
 			if(index >= recipes.size())
@@ -172,11 +172,11 @@ public class GuiRecipes extends GuiNPCInterface
     }
     
     private void drawOverlay(ItemStack item, int x, int y, int xMouse, int yMouse){
-        if (this.func_146978_c(x - guiLeft, y - guiTop, 16, 16, xMouse, yMouse)){
+        if (this.isPointInRegion(x - guiLeft, y - guiTop, 16, 16, xMouse, yMouse)){
             this.renderToolTip(item, xMouse, yMouse);
         }
     }
-    protected boolean func_146978_c(int p_146978_1_, int p_146978_2_, int p_146978_3_, int p_146978_4_, int p_146978_5_, int p_146978_6_)
+    protected boolean isPointInRegion(int p_146978_1_, int p_146978_2_, int p_146978_3_, int p_146978_4_, int p_146978_5_, int p_146978_6_)
     {
         int k1 = this.guiLeft;
         int l1 = this.guiTop;

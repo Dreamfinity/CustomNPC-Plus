@@ -60,9 +60,9 @@ public class GuiMenuTopIconButton extends GuiMenuTopButton{
         hover = i >= xPosition && j >= yPosition && i < xPosition + getWidth() && j < yPosition + height;
         Minecraft mc = Minecraft.getMinecraft();
         if(hover && !active){
-        	int x = i + mc.fontRenderer.getStringWidth(displayString);
+        	int x = i + mc.fontRendererObj.getStringWidth(displayString);
             GL11.glTranslatef(x, yPosition + 2, 0);
-        	drawHoveringText(Arrays.asList(new String[] {displayString}), 0, 0, mc.fontRenderer);
+        	drawHoveringText(Arrays.asList(new String[] {displayString}), 0, 0, mc.fontRendererObj);
             GL11.glTranslatef(-x, -(yPosition + 2), 0);
         }
         mc.getTextureManager().bindTexture(resource);
@@ -76,8 +76,8 @@ public class GuiMenuTopIconButton extends GuiMenuTopButton{
         GL11.glEnable(GL11.GL_LIGHTING);
         GL11.glEnable(GL12.GL_RESCALE_NORMAL);
         RenderHelper.enableGUIStandardItemLighting();
-        itemRender.renderItemAndEffectIntoGUI(mc.fontRenderer, mc.getTextureManager(), item, xPosition + 6, yPosition + 10);
-        itemRender.renderItemOverlayIntoGUI(mc.fontRenderer, mc.getTextureManager(), item, xPosition + 6, yPosition + 10);
+        itemRender.renderItemAndEffectIntoGUI(mc.fontRendererObj, mc.getTextureManager(), item, xPosition + 6, yPosition + 10);
+        itemRender.renderItemOverlayIntoGUI(mc.fontRendererObj, mc.getTextureManager(), item, xPosition + 6, yPosition + 10);
         RenderHelper.disableStandardItemLighting(); 
         GL11.glDisable(GL11.GL_LIGHTING);
         itemRender.zLevel = 0.0F;

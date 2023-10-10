@@ -457,7 +457,7 @@ public class PathNavigateFlying extends PathNavigate {
                 Block block = this.worldObj.getBlock(l, i1, j1);
                 int k1 = this.worldObj.getBlockMetadata(l, i1, j1);
 
-                if ((!p_147447_4_ || block.getCollisionBoundingBoxFromPool(this.worldObj, l, i1, j1) != null) && block.canCollideCheck(k1, p_147447_3_))
+                if ((!p_147447_4_ || block.getCollisionBoundingBoxFromPool(this.worldObj, l, i1, j1) != null) && block.canStopRayTrace(k1, p_147447_3_))
                 {
                     MovingObjectPosition movingobjectposition = block.collisionRayTrace(this.worldObj, l, i1, j1, p_147447_1_, p_147447_2_);
 
@@ -648,12 +648,12 @@ public class PathNavigateFlying extends PathNavigate {
                                 Block block2 = this.worldObj.getBlock(l, i1, j1);
                                 int meta2 = this.worldObj.getBlockMetadata(l, i1, j1);
 
-                                boolean collideCheck = (!p_147447_4_ || block2.getCollisionBoundingBoxFromPool(this.worldObj, l, i1, j1) != null) && block2.canCollideCheck(meta2, p_147447_3_);
+                                boolean collideCheck = (!p_147447_4_ || block2.getCollisionBoundingBoxFromPool(this.worldObj, l, i1, j1) != null) && block2.canStopRayTrace(meta2, p_147447_3_);
                                 boolean noCollisionBlock = block2 == Blocks.air || block2.getMaterial() == Material.lava && this.theEntity.isImmuneToFire() ||
                                         block2.getMaterial() == Material.water && this.theEntity.stats.drowningType == 2;
 
                                 if (collideCheck && !noCollisionBlock) {
-                                    if (!block2.getBlocksMovement(this.worldObj, l, i1, j1)) {
+                                    if (!block2.isPassable(this.worldObj, l, i1, j1)) {
                                         value = true;
                                         l -= x;
                                         i1 -= y;

@@ -29,7 +29,7 @@ class SlotNpcMercenaryCurrency extends Slot
     	Item item = itemstack.getItem();
     	for(ItemStack is : role.inventory.items.values()){
     		if(item == is.getItem()){
-    			if(itemstack.getHasSubtypes() && itemstack.getItemDamage() != is.getItemDamage())
+    			if(itemstack.getHasSubtypes() && itemstack.getMetadata() != is.getMetadata())
     				continue;
     			return true;
     		}

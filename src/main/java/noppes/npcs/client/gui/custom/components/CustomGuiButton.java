@@ -24,7 +24,7 @@ public class CustomGuiButton extends GuiButton implements IClickListener {
     String texture;
     public int textureX;
     public int textureY;
-    boolean field_146123_n;
+    boolean hovered;
     String label;
     String[] hoverText;
 
@@ -90,8 +90,8 @@ public class CustomGuiButton extends GuiButton implements IClickListener {
     }
 
     public void onRender(Minecraft mc, int mouseX, int mouseY, int mouseWheel, float partialTicks) {
-        this.field_146123_n = mouseX >= this.xPosition + GuiCustom.guiLeft && mouseY >= this.yPosition + GuiCustom.guiTop && mouseX < this.xPosition + GuiCustom.guiLeft + this.width * this.scale && mouseY < this.yPosition + GuiCustom.guiTop + this.height * this.scale;
-        FontRenderer fontRenderer = mc.fontRenderer;
+        this.hovered = mouseX >= this.xPosition + GuiCustom.guiLeft && mouseY >= this.yPosition + GuiCustom.guiTop && mouseX < this.xPosition + GuiCustom.guiLeft + this.width * this.scale && mouseY < this.yPosition + GuiCustom.guiTop + this.height * this.scale;
+        FontRenderer fontRenderer = mc.fontRendererObj;
 
         float red = (color >> 16 & 255) / 255f;
         float green = (color >> 8  & 255) / 255f;
@@ -108,7 +108,7 @@ public class CustomGuiButton extends GuiButton implements IClickListener {
             float v2 = v1 + (float)height/(float)totalHeight;
 
             if (this.enabled) {
-                if (this.field_146123_n) {
+                if (this.hovered) {
                     v1 = (float)(textureY + 2 * this.height)/(float)totalHeight;
                 } else {
                     v1 = (float)(textureY + this.height)/(float)totalHeight;
@@ -140,7 +140,7 @@ public class CustomGuiButton extends GuiButton implements IClickListener {
                 GL11.glScalef(this.scale,this.scale,1.0F);
 
                 mc.getTextureManager().bindTexture(buttonTextures);
-                int i = this.getHoverState(this.field_146123_n);
+                int i = this.getHoverState(this.hovered);
                 GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
                 this.drawTexturedModalRect(0, 0, 0, 46 + i * 20, this.width / 2, this.height);
                 this.drawTexturedModalRect(this.width / 2, 0, 200 - this.width / 2, 46 + i * 20, this.width / 2, this.height);
@@ -150,7 +150,7 @@ public class CustomGuiButton extends GuiButton implements IClickListener {
                     j = this.packedFGColour;
                 } else if (!this.enabled) {
                     j = 10526880;
-                } else if (this.field_146123_n) {
+                } else if (this.hovered) {
                     j = 16777120;
                 }
                 GL11.glTranslated(0.0D, 0.0D, 0.1D);
@@ -158,7 +158,7 @@ public class CustomGuiButton extends GuiButton implements IClickListener {
             GL11.glPopMatrix();
         }
 
-        if (this.field_146123_n && this.hoverText != null && this.hoverText.length > 0) {
+        if (this.hovered && this.hoverText != null && this.hoverText.length > 0) {
             this.parent.hoverText = this.hoverText;
         }
     }
@@ -172,7 +172,7 @@ public class CustomGuiButton extends GuiButton implements IClickListener {
     }
 
     public boolean mouseClicked(GuiCustom gui, int mouseX, int mouseY, int mouseButton) {
-        if (this.field_146123_n && this.enabled) {
+        if (this.hovered && this.enabled) {
             gui.buttonClick(this);
             return true;
         } else {

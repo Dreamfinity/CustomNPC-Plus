@@ -29,7 +29,7 @@ public class TileColorable extends TileEntity {
     }
 
     public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity pkt){
-    	NBTTagCompound compound = pkt.func_148857_g();
+    	NBTTagCompound compound = pkt.getNbtCompound();
     	readFromNBT(compound);
     }
     

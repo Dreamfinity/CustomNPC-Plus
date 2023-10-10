@@ -30,7 +30,7 @@ public class BlockBook extends BlockRotated{
     		return false;
 		ItemStack currentItem = player.inventory.getCurrentItem();
 		if (currentItem != null	&& currentItem.getItem() == CustomItems.wand && CustomNpcsPermissions.hasPermission(player, CustomNpcsPermissions.EDIT_BLOCKS)) {
-			((TileBook)tile).book.func_150996_a(Items.writable_book);
+			((TileBook)tile).book.setItem(Items.writable_book);
 		}
     	Server.sendData((EntityPlayerMP)player, EnumPacketClient.OPEN_BOOK, i, j, k, ((TileBook)tile).book.writeToNBT(new NBTTagCompound()));
     	return true;

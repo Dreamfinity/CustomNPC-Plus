@@ -42,7 +42,7 @@ public class BlockWallBanner extends BlockContainer{
     	else if(item.getItem() != Items.dye)
     		return false;
     	
-    	int color = BlockColored.func_150031_c(item.getItemDamage());
+    	int color = BlockColored.func_150031_c(item.getMetadata());
     	if(tile.color != color){
     		NoppesUtilServer.consumeItemStack(1, player);
 			tile.color = color;
@@ -58,10 +58,10 @@ public class BlockWallBanner extends BlockContainer{
         l %= 4;
     	TileWallBanner tile = (TileWallBanner) par1World.getTileEntity(par2, par3, par4);
     	tile.rotation = l;
-    	tile.color = 15 - par6ItemStack.getItemDamage();
+    	tile.color = 15 - par6ItemStack.getMetadata();
     	tile.time = System.currentTimeMillis();
         
-        par1World.setBlockMetadataWithNotify(par2, par3, par4, par6ItemStack.getItemDamage(), 2);
+        par1World.setBlockMetadataWithNotify(par2, par3, par4, par6ItemStack.getMetadata(), 2);
 
     	if(par5EntityLivingBase instanceof EntityPlayer && par1World.isRemote)
     		((EntityPlayer)par5EntityLivingBase).addChatComponentMessage(new ChatComponentTranslation("availability.editIcon"));
@@ -104,7 +104,7 @@ public class BlockWallBanner extends BlockContainer{
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void registerBlockIcons(IIconRegister par1IconRegister)
+    public void registerIcons(IIconRegister par1IconRegister)
     {
     	
     }

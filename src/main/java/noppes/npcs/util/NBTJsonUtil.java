@@ -87,17 +87,17 @@ public class NBTJsonUtil {
 			}
 			json.cut(1);
 
-			if(list.func_150303_d() == 3){
+			if(list.getTagType() == 3){
 				int[] arr = new int[list.tagCount()];
 				for(int i = 0; list.tagCount() > 0 ; i++){
-					arr[i] = ((NBTTagInt)list.removeTag(0)).func_150287_d();
+					arr[i] = ((NBTTagInt)list.removeTag(0)).getInt();
 				}
 				return new NBTTagIntArray(arr);
 			}
-			if(list.func_150303_d() == 1){
+			if(list.getTagType() == 1){
 				byte[] arr = new byte[list.tagCount()];
 				for(int i = 0; list.tagCount() > 0 ; i++){
-					arr[i] = ((NBTTagByte)list.removeTag(0)).func_150290_f();
+					arr[i] = ((NBTTagByte)list.removeTag(0)).getByte();
 				}
 				return new NBTTagByteArray(arr);
 			}
@@ -157,7 +157,7 @@ public class NBTJsonUtil {
 		if(!name.isEmpty())
 			name = "\"" + name + "\": ";
 		if(base.getId() == 8){//NBTTagString
-			String data = ((NBTTagString)base).func_150285_a_();
+			String data = ((NBTTagString)base).getString();
 			data = data.replace("\"", "\\\""); //replace " with \"
 			list.add(new JsonLine(name + "\"" + data + "\""));
 		}
@@ -176,7 +176,7 @@ public class NBTJsonUtil {
 			list.add(new JsonLine(name + "{"));
 			NBTTagCompound compound = (NBTTagCompound)base;
 			JsonLine line = null;
-			for(Object key : compound.func_150296_c())
+			for(Object key : compound.getKeySet())
 				line = ReadTag(key.toString(), compound.getTag(key.toString()), list);
 
 			if(line != null)

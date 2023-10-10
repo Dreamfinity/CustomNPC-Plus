@@ -174,11 +174,11 @@ public class DataTransform {
 		if(hasJob)
 			compoundJob = job;
 		
-		Set<String> names = compoundRole.func_150296_c();
+		Set<String> names = compoundRole.getKeySet();
 		for(String name : names)
 			compoundAdv.setTag(name, compoundRole.getTag(name));
 
-		names = compoundJob.func_150296_c();
+		names = compoundJob.getKeySet();
 		for(String name : names)
 			compoundAdv.setTag(name, compoundJob.getTag(name));
 		

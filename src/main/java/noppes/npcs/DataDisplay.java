@@ -90,7 +90,7 @@ public class DataDisplay {
 		if (this.playerProfile != null)
         {
             NBTTagCompound nbttagcompound1 = new NBTTagCompound();
-            NBTUtil.func_152460_a(nbttagcompound1, this.playerProfile);
+            NBTUtil.writeGameProfileToNBT(nbttagcompound1, this.playerProfile);
             nbttagcompound.setTag("SkinUsername", nbttagcompound1);
         }
 		
@@ -129,7 +129,7 @@ public class DataDisplay {
 		this.playerProfile = null;
 		if(skinType == 1){
 	        if (nbttagcompound.hasKey("SkinUsername", 10)){
-	            this.playerProfile = NBTUtil.func_152459_a(nbttagcompound.getCompoundTag("SkinUsername"));
+	            this.playerProfile = NBTUtil.readGameProfileFromNBT(nbttagcompound.getCompoundTag("SkinUsername"));
 	        }
 	        else if (nbttagcompound.hasKey("SkinUsername", 8) && !StringUtils.isNullOrEmpty(nbttagcompound.getString("SkinUsername"))){
 	            this.playerProfile = new GameProfile(null, nbttagcompound.getString("SkinUsername"));
@@ -201,13 +201,13 @@ public class DataDisplay {
     public void loadProfile(){
         if (this.playerProfile != null && !StringUtils.isNullOrEmpty(this.playerProfile.getName()) && MinecraftServer.getServer() != null){
             if (!this.playerProfile.isComplete() || !this.playerProfile.getProperties().containsKey("textures")){
-                GameProfile gameprofile = MinecraftServer.getServer().func_152358_ax().func_152655_a(this.playerProfile.getName());
+                GameProfile gameprofile = MinecraftServer.getServer().getPlayerProfileCache().getGameProfileForUsername(this.playerProfile.getName());
 
                 if (gameprofile != null){
                     Property property = (Property)Iterables.getFirst(gameprofile.getProperties().get("textures"), (Object)null);
 
                     if (property == null){
-                        gameprofile = MinecraftServer.getServer().func_147130_as().fillProfileProperties(gameprofile, false);
+                        gameprofile = MinecraftServer.getServer().getMinecraftSessionService().fillProfileProperties(gameprofile, false);
                     }
 
                     this.playerProfile = gameprofile;

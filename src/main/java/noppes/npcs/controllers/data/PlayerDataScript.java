@@ -95,7 +95,7 @@ public class PlayerDataScript implements IScriptHandler {
         return ConfigScript.GlobalPlayerScripts && ScriptController.Instance.playerScripts.enabled && ScriptController.HasStart && (this.player == null || !this.player.worldObj.isRemote);
     }
     public boolean isClient() {
-        return this.player.isClientWorld();
+        return this.player.isServerWorld();
     }
     public boolean getEnabled() {
         return ScriptController.Instance.playerScripts.enabled;

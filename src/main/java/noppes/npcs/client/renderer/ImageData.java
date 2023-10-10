@@ -42,7 +42,7 @@ public class ImageData {
         this.location = resource;
         this.isUrl = true;
         TextureManager texturemanager = Minecraft.getMinecraft().getTextureManager();
-        this.imageDownloadAlt = new ImageDownloadAlt(null, directory, SkinManager.field_152793_a, new ImageBufferDownloadAlt(x64));
+        this.imageDownloadAlt = new ImageDownloadAlt(null, directory, SkinManager.DEFAULT_SKIN, new ImageBufferDownloadAlt(x64));
         texturemanager.loadTexture(this.location, this.imageDownloadAlt);
     }
 

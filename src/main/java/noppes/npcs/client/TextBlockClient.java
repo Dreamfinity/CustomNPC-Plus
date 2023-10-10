@@ -46,7 +46,7 @@ public class TextBlockClient extends TextBlock{
 		text = text.replace("\r", " \r ");
 		String[] words = text.split(" ");
 		
-		FontRenderer font = Minecraft.getMinecraft().fontRenderer;
+		FontRenderer font = Minecraft.getMinecraft().fontRendererObj;
 		for(String word : words){
 			if(word.isEmpty())
 				continue;

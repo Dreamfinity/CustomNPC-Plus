@@ -47,7 +47,7 @@ public class ContainerMerchantAdd extends ContainerNpcInterface
 
     public void addCraftingToCrafters(ICrafting par1ICrafting)
     {
-        super.addCraftingToCrafters(par1ICrafting);
+        super.onCraftGuiOpened(par1ICrafting);
     }
 
     /**

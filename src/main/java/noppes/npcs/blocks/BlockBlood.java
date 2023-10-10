@@ -61,7 +61,7 @@ public class BlockBlood extends Block{
     
     @SideOnly(Side.CLIENT)
     @Override
-    public void registerBlockIcons(IIconRegister par1IconRegister){
+    public void registerIcons(IIconRegister par1IconRegister){
         this.blockIcon = par1IconRegister.registerIcon(this.getTextureName());
         this.blockIcon2 = par1IconRegister.registerIcon(getTextureName() + "2");
         this.blockIcon3 = par1IconRegister.registerIcon(getTextureName() + "3");

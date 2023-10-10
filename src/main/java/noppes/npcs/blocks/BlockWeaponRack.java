@@ -87,8 +87,8 @@ public class BlockWeaponRack extends BlockTrigger{
 	    	TileColorable tile = (TileColorable) par1World.getTileEntity(par2, par3, par4);
 	    	tile.rotation = l;
 	    	
-	        par1World.setBlockMetadataWithNotify(par2, par3, par4, par6ItemStack.getItemDamage() , 2);
-	        par1World.setBlock(par2, par3 + 1, par4, this, par6ItemStack.getItemDamage() + 7, 2);
+	        par1World.setBlockMetadataWithNotify(par2, par3, par4, par6ItemStack.getMetadata() , 2);
+	        par1World.setBlock(par2, par3 + 1, par4, this, par6ItemStack.getMetadata() + 7, 2);
     	}
     	
     }
@@ -151,7 +151,7 @@ public class BlockWeaponRack extends BlockTrigger{
         	return;
         tile.dropItems(world, x, y, z);
 
-        world.func_147453_f(x, y, z, block);
+        world.updateNeighborsAboutBlockChange(x, y, z, block);
 
         super.breakBlock(world, x, y, z, block, p_149749_6_);
     }

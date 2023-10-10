@@ -119,7 +119,7 @@ public class NoppesUtil {
 	}
 
 	public static void clickSound() {
-        Minecraft.getMinecraft().getSoundHandler().playSound(PositionedSoundRecord.func_147674_a(new ResourceLocation("gui.button.press"), 1.0F));    	
+        Minecraft.getMinecraft().getSoundHandler().playSound(PositionedSoundRecord.createPositionedSoundRecord(new ResourceLocation("gui.button.press"), 1.0F));    	
 	}
 
 	private static EntityNPCInterface lastNpc;

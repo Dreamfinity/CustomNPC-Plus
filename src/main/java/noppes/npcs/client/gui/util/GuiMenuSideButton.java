@@ -31,12 +31,12 @@ public class GuiMenuSideButton extends GuiNpcButton{
         if (!visible){
             return;
         }
-        FontRenderer fontrenderer = minecraft.fontRenderer;
+        FontRenderer fontrenderer = minecraft.fontRendererObj;
         minecraft.renderEngine.bindTexture(resource);
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
         int width = this.width + (active?2:0);
-        field_146123_n = i >= xPosition && j >= yPosition && i < xPosition + width && j < yPosition + height;
-        int k = getHoverState(field_146123_n);
+        hovered = i >= xPosition && j >= yPosition && i < xPosition + width && j < yPosition + height;
+        int k = getHoverState(hovered);
         drawTexturedModalRect(xPosition, yPosition, 0,  k * 22, width, height);
         mouseDragged(minecraft, i, j);
         
@@ -56,7 +56,7 @@ public class GuiMenuSideButton extends GuiNpcButton{
         if (active){
             drawCenteredString(fontrenderer, text, xPosition + width / 2, yPosition + (height - 8) / 2, 0xffffa0);
         }
-        else if (field_146123_n){
+        else if (hovered){
             drawCenteredString(fontrenderer, text, xPosition + width / 2, yPosition + (height - 8) / 2, 0xffffa0);
         }
         else{
@@ -75,6 +75,6 @@ public class GuiMenuSideButton extends GuiNpcButton{
 
     @Override
     public boolean mousePressed(Minecraft minecraft, int i, int j){
-        return !active && visible && field_146123_n;
+        return !active && visible && hovered;
     }
 }

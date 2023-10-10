@@ -22,7 +22,7 @@ public class GuiTexturedButton extends GuiNpcButton {
     ResourceLocation location;
     public int textureX;
     public int textureY;
-    boolean field_146123_n;
+    boolean hovered;
     String label;
 
     public int color;
@@ -78,7 +78,7 @@ public class GuiTexturedButton extends GuiNpcButton {
         {
             return;
         }
-        this.field_146123_n = mouseX >= this.xPosition && mouseY >= this.yPosition && mouseX < this.xPosition + this.width * this.scale && mouseY < this.yPosition + this.height * this.scale;
+        this.hovered = mouseX >= this.xPosition && mouseY >= this.yPosition && mouseX < this.xPosition + this.width * this.scale && mouseY < this.yPosition + this.height * this.scale;
 
         if(imageDownloadAlt != null && isUrl && !gotWidthHeight){
             getURLWidthHeight();
@@ -94,12 +94,12 @@ public class GuiTexturedButton extends GuiNpcButton {
                 mc.getTextureManager().bindTexture(this.location);
                 this.drawTexturedModalRect(0, 0, this.textureX, this.textureY, this.width, this.height);
                 GL11.glTranslated(0.0D, 0.0D, 0.1D);
-                this.drawCenteredString(mc.fontRenderer, this.label, this.width / 2, (this.height - 8) / 2, this.color);
+                this.drawCenteredString(mc.fontRendererObj, this.label, this.width / 2, (this.height - 8) / 2, this.color);
             } else {
-                FontRenderer fontrenderer = mc.fontRenderer;
+                FontRenderer fontrenderer = mc.fontRendererObj;
                 mc.getTextureManager().bindTexture(buttonTextures);
                 GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-                int k = this.getHoverState(this.field_146123_n);
+                int k = this.getHoverState(this.hovered);
                 GL11.glEnable(GL11.GL_BLEND);
                 OpenGlHelper.glBlendFunc(770, 771, 1, 0);
                 this.drawTexturedModalRect(0, 0, 0, 46 + k * 20, this.width / 2, this.height);
@@ -115,7 +115,7 @@ public class GuiTexturedButton extends GuiNpcButton {
                 {
                     l = 10526880;
                 }
-                else if (this.field_146123_n)
+                else if (this.hovered)
                 {
                     l = 16777120;
                 }
@@ -140,7 +140,7 @@ public class GuiTexturedButton extends GuiNpcButton {
         float v2 = v1 + (float)height/(float)totalHeight;
 
         if (this.location != null && this.enabled) {
-            if (this.field_146123_n) {
+            if (this.hovered) {
                 v1 = (float)(textureY + 2 * this.height)/(float)totalHeight;
             } else {
                 v1 = (float)(textureY + this.height)/(float)totalHeight;
@@ -167,7 +167,7 @@ public class GuiTexturedButton extends GuiNpcButton {
     @Override
     public boolean mousePressed(Minecraft minecraft, int i, int j)
     {
-        return super.mousePressed(minecraft,i,j) || this.field_146123_n;
+        return super.mousePressed(minecraft,i,j) || this.hovered;
     }
 
     public void getWidthHeight() throws IOException {

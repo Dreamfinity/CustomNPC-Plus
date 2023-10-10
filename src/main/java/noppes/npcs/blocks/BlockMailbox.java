@@ -68,7 +68,7 @@ public class BlockMailbox extends BlockContainer{
         int l = MathHelper.floor_double((double)(par5EntityLivingBase.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
         l %= 4;
         
-        par1World.setBlockMetadataWithNotify(par2, par3, par4, l | par6ItemStack.getItemDamage() << 2, 2);
+        par1World.setBlockMetadataWithNotify(par2, par3, par4, l | par6ItemStack.getMetadata() << 2, 2);
     }
 
     @Override   
@@ -87,7 +87,7 @@ public class BlockMailbox extends BlockContainer{
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void registerBlockIcons(IIconRegister par1IconRegister)
+    public void registerIcons(IIconRegister par1IconRegister)
     {
     	
     }
